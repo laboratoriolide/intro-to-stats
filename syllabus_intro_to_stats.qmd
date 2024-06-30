@@ -12,7 +12,7 @@ bibliography: references.bib
 
 **Course level**: Intermediate
 
-**Prerequisite knowledge**: Basic arithmetic, algebra, cartesian graphing, basic Stata scripting.
+**Prerequisite knowledge**: Basic arithmetic, algebra, cartesian graphing, Stata scripting.
 
 # Course overview
 
@@ -30,12 +30,13 @@ The following is a planned outline of the course. This may change depending on t
     - Introduction to statistics
     - Observations, variables, data types, data formats
     - Descriptive statistics and graphical representations
-    - **Assigned reading**: @barbayannis_etal22
+    - **Assigned reading**: Course syllabus    
 
 - Lecture 2: A brief introduction to probability
     - Why probability?
     - Basic probability: experiments, counting, set theory, conditional probability
     - Random variables and probability distributions (discrete and continous)
+    - - **Assigned reading**: @barbayannis_etal22
 
 - Lecture 3: Statistical inference
     - What is statistical inference?
@@ -49,33 +50,33 @@ The following is a planned outline of the course. This may change depending on t
     - Type I and Type II errors
     - Single-sample hypothesis tests: one and two-tailed tests
     - Z-tests and t-tests for mean inference (using software)
-    - Time permitting: proportion tests
+    - Time permitting: proportion tests and chi-squared tests
 
 - Lecture 5: Experimental design and ANOVA
     - What is experimental design?
     - Why experiments? Causality in social science
-    - One-way ANOVA
-    - Two-way ANOVA
+    - One-way and two-way ANOVA
     - **Assigned reading**: @stanley_etal23
 
 - Lecture 6: Ordinary least squares regression (OLS) I
     - What is regression?
     - Simple linear regression
-    - Interpreting regression coefficients
-    - Multiple linear regression
-    - The Gauss-Markov assumptions
+    - Coefficient interpretation in simple regression
+    - OLS features and properties: residuals, fitted values, unit transformations
+    - Linearity in parameters
 
 - Lecture 7: Ordinary least squares regression (OLS) II
-    - Multiple linear regression coefficient interpretation
-    - Unbiasedness of estimators - simulation with OLS
+    - Multiple linear regression
+    - Coefficient interpretation in multiple regression
+    - OLS assumptions for unbiasedness
+    - Demonstrating unbiasedness with simulation
     - Functional form with OLS 
-    - Hypothesis testing with OLS
 
 - Lecture 8: Ordinary least squares regression (OLS) III
-    - Reading regression tables
+    - Hypothesis testing in regression
     - Dummy variables
     - Goodness of fit
-    - 
+    - Reading regression tables
 
 # Administrative matters
 
