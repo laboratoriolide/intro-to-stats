@@ -75,6 +75,7 @@ The following is a planned outline of the course. This may change depending on t
     - Reading regression tables
     - Dummy variables
     - Goodness of fit
+    - 
 
 # Administrative matters
 
