@@ -8,11 +8,13 @@ bibliography: references.bib
 
 **Instructor**: Daniel Sánchez, MA
 
-**Module length**: 12 hours
+**Module length**: 15 hours
 
 **Course level**: Intermediate
 
 **Prerequisite knowledge**: Basic arithmetic, algebra, cartesian graphing, Stata scripting.
+
+**GitHub repository**: [https://github.com/laboratoriolide/intro-to-stats](https://github.com/laboratoriolide/intro-to-stats)
 
 # Course overview
 
@@ -24,65 +26,89 @@ To best understand the material, students should have a basic understanding of a
 
 # Module contents
 
-The following is a planned outline of the course. This may change depending on the pace of the class. Each lecture will have one or two assigned readings, which will all be academic articles submitted to the course's GitHub folder. See below for details on these readings.
+The following is a planned outline of the course. This may change depending on the pace of the class. Each lecture will have one or two assigned readings, which will all be academic articles submitted to the course's [GitHub repository](https://github.com/laboratoriolide/intro-to-stats). See below for details on these readings.
 
-- Lecture 1: Introduction to statistics, the logic of data and descriptive analyses
-    - Introduction to statistics
+- **Lecture 1**: Intro
+    - Introduction to statistics: what is it and why do we need it in social science research?
     - Observations, variables, data types, data formats
-    - Descriptive statistics and graphical representations
-    - **Assigned reading**: Course syllabus    
+    - Populations vs. samples
+    - Descriptive vs. inferential statistics
+    - **Assigned reading**: Course syllabus, @brown98
 
-- Lecture 2: A brief introduction to probability
+- **Lecture 2**: Descriptive statistics and statistical data visualization
+    - Measures of central tendency: mean, median, mode
+    - Measures of dispersion: variance, standard deviation, range, IQR
+    - Measures of distributional shape: skewness, kurtosis
+    - Data visualization: histograms, box plots, scatter plots, cumulative distributions 
+    -  **Assigned reading**: @lupu_zechmeister20, prepare to replicate charts and apply descriptive statistics to the dataset (file provided on GitHub)
+
+- **Lecture 3**: A brief introduction to probability
     - Why probability?
     - Basic probability: experiments, counting, set theory, conditional probability
-    - Random variables and probability distributions (discrete and continous)
-    - - **Assigned reading**: @barbayannis_etal22
+    - Random variables and probability distributions (discrete and continuous)
+    - Probability distribution functions (PDFs) and cumulative distribution functions (CDFs)
+    - The normal distribution and its properties, the empirical rule
+    - The standard normal distribution and $z$-scores
+    - **Assigned reading**: @redaccionprimicias20, will be used for a class exercise.
+    - Time-permitting: bootstrapping
 
-- Lecture 3: Statistical inference
+- **Lecture 4**: Statistical inference
     - What is statistical inference?
-    - Sampling distributions, expected value and standard errors
-    - Central limit theorem
+    - Sampling distributions
+    - The central limit theorem
+    - The law of large numbers
+    - Expected value, variance and standard errors
     - Using simulation to understand sampling distributions
-    - Confidence intervals and margin of error
+    - **Assigned reading**
 
-- Lecture 4: Hypothesis testing
+- **Lecture 5**: Point and interval estimation
+    - What is estimation? 
+    - Bias, efficiency and margin of error
+    - Significance levels (alpha)
+    - Margin of error with sampling distributions
+    - Confidence intervals and their interpretation, hypothesis testing with CIs
+    -  **Assigned reading**: @barbayannis_etal22, with attention to the research question, charts and discussion, less on methods being used. 
+
+- **Lecture 6**: Hypothesis testing
     - What is hypothesis testing?
     - Type I and Type II errors
+    - $p$-values and critical values
     - Single-sample hypothesis tests: one and two-tailed tests
-    - Z-tests and t-tests for mean inference (using software)
-    - Time permitting: proportion tests and chi-squared tests
+    - One sample $z$-test for mean inference
+    - **Assigned reading**: @ahmed_etal13, with attention to Table 1.
 
-- Lecture 5: Experimental design and ANOVA
+- **Lecture 7**: More on hypothesis testing
+    - The $t$-distribution, degrees of freedom and the one sample $t$-test
+    - Two sample $z$ and $t$-tests for mean inference 
+    - Paired t-tests (dependent samples)
+    - Time permitting: critical value tables
+    - Time permitting: proportion tests and chi-squared tests
+    - Choosing the right test for your research question
+    - **Assigned reading**: @broockman_skovron18a, with attention to Table 2.
+
+- **Lecture 8**: Experimental design and ANOVA
     - What is experimental design?
     - Why experiments? Causality in social science
     - One-way and two-way ANOVA
-    - **Assigned reading**: @stanley_etal23
+    - **Assigned reading**: @stanley_etal23, 
+    - Time-permitting: factorial ANOVA
 
-- Lecture 6: Ordinary least squares regression (OLS) I
+- **Lecture 9**: Ordinary least squares regression (OLS) I
     - What is regression?
     - Simple linear regression
     - Coefficient interpretation in simple regression
     - OLS features and properties: residuals, fitted values, unit transformations
     - Linearity in parameters
+    - Time permitting: multiple regression
+    - **Assigned reading**: @holcombe_boudreaux15, with attention to regression (1) on Table 1. 
 
-- Lecture 7: Ordinary least squares regression (OLS) II
-    - Multiple linear regression
-    - Coefficient interpretation in multiple regression
-    - OLS assumptions for unbiasedness
-    - Demonstrating unbiasedness with simulation
-    - Functional form with OLS 
+- **Lecture 10**: Case study presentations
 
-- Lecture 8: Ordinary least squares regression (OLS) III
-    - Hypothesis testing in regression
-    - Dummy variables
-    - Goodness of fit
-    - Reading regression tables
 
-# Administrative matters
+# Readings and course materials
 
-## Communication
 
-All communications to the instructor or teaching assistant (TA) should be made through the course's Slack channel. We hope to respond to questions within 72 hours, but please be patient if we take longer.
+# Evaluation
 
 ## Assignments
 
@@ -92,7 +118,11 @@ There will be weekly DataCamp assignments, which will be either courses, project
 
 I do not have any special requirements for attendance nor participations other than the requirements set by the program. Consult the program's regulation handbook for more information. I encourage you to participate in class and ask questions, as this will help you understand the material better. Statistics typically inspires frustation, so it is important to ask questions when you are confused - as any other quantitative course, the material builds up on itself, so better to understand things sooner rather than later.
 
-## Materials
+# Module policies
+
+## Communication
+
+All communications to the instructor or teaching assistant (TA) should be made through the course's Slack channel. We hope to respond to questions within 72 hours, but please be patient if we take longer.
 
 
 # References
