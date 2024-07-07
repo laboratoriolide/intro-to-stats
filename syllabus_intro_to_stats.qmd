@@ -4,6 +4,7 @@ subtitle: "A brief introduction to applied statistics for quantitative social sc
 author: "Laboratorio de Investigación para el Desarrollo del Ecuador"
 format: pdf
 bibliography: references.bib
+number-sections: true
 ---
 
 **Instructor**: Daniel Sánchez, MA
@@ -100,13 +101,7 @@ The following is a planned outline of the course. This may change depending on t
     - **Assigned reading**: @holcombe_boudreaux15, with attention to regression (1) on Table 1. 
 
 - **Lecture 10**: Case study presentations
-
-
-# Readings and course materials
-
-# Software 
-
-As mentioned, the course will also feature demonstrations of statistical concepts using Stata, a widespread software package across academic environments. Further, I will provide practice exercises to be solved with this language. These will not be graded, but feedback will provided to those that want it. I will not introduce the use of Stata, as it is assumed all students have already taken and succesfully passed the introductory course on Stata from our last module, *Intro to Stata*. However, I will answer questions and provide personalized help to those who need it, conditional on available time.
+  - See below for details on the case study. No assigned reading for the last day of lecture. 
 
 # Evaluation
 
@@ -128,6 +123,12 @@ The case study is due the last day of class. The case study involves using the s
 ## Attendance and participation
 
 I do not have any special requirements for attendance nor participations other than the requirements set by the program. Consult the program's regulation handbook for more information. I encourage you to participate in class and ask questions, as this will help you understand the material better. Statistics typically inspires frustation, so it is important to ask questions when you are confused - as any other quantitative course, the material builds up on itself, so better to understand things sooner rather than later.
+
+# Readings and course materials
+
+# Software 
+
+As mentioned, the course will also feature demonstrations of statistical concepts using Stata, a widespread software package across academic environments. Further, I will provide practice exercises to be solved with this language. These will not be graded, but feedback will provided to those that want it. I will not introduce the use of Stata, as it is assumed all students have already taken and succesfully passed the introductory course on Stata from our last module, *Intro to Stata*. However, I will answer questions and provide personalized help to those who need it, conditional on available time.
 
 # Module policies
 
