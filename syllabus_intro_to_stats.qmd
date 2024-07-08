@@ -3,7 +3,7 @@ title: "Intro to statistics"
 subtitle: "A brief introduction to applied statistics for quantitative social science research"
 author: "Laboratorio de Investigación para el Desarrollo del Ecuador"
 format: pdf
-bibliography: references.bib
+bibliography: bibliography-files/references.bib
 number-sections: true
 ---
 
@@ -13,7 +13,7 @@ number-sections: true
 
 **Course level**: Intermediate
 
-**Prerequisite knowledge**: Basic arithmetic, algebra, cartesian graphing, Stata scripting.
+**Prerequisite knowledge**: Basic arithmetic, algebra, cartesian graphing, Stata scripting, Git. 
 
 **GitHub repository**: [https://github.com/laboratoriolide/intro-to-stats](https://github.com/laboratoriolide/intro-to-stats)
 
@@ -107,34 +107,59 @@ The following is a planned outline of the course. This may change depending on t
 
 The module will be graded following the same weighting as the one proposed by the program's regulation handbook. The final grade will be calculated as follows:
 
-## Assignments **(Prelim)**
-
-There will be weekly DataCamp assignments that reinforce the material taught in this module as well as that of the sister *Intro to R* module. The assignments will focus on R implementations of statistical methods, statistical theory or other relevant topics. These will be either DataCamp courses, projects or exercises, and are graded on a pass/fail basis. They are due by 11:59pm on the Sunday of the week they are assigned, however, please check the DataCamp platform for the exact due date. As mentioned above, Stata exercises will be provided, but not graded.
-## Readings 
-
-There will be a reading assignment for each lecture. These can be academic or general articles that will be used as to illustrate the concepts covered in class. Students are expected to read the assigned readings before class and be prepared to discuss them. Files for all readings will be provided in the course's GitHub repository.
-
-When readings are academic articles, students should not expect to fully understand the methods used in the paper. This module is an introduction to statistics, so students will progressively learn the methods used in the readings as the course progresses. Students should focus on the specific part the reading was assigned for, as well as the paper's objective, a general overview of the methods and any applicable public policy implications. For example, for @ahmed_etal13, the focus is on understanding Table 1. 
-
-## Case study 
-
-The case study is due the last day of class. The case study involves using the skills gained in this module as well as the *Intro to R* module to analyze the provided case study dataset in groups of 5-6 students. Each group will present their findings in 10-minute academic-style presentation. followed by a 5-minute questions and answers (Q&A) session by the instructor and the rest of the class. A handout will be provided with the case study details and rubric. 
+| Component               | Percentage |
+|-------------------------|------------|
+| Attendance & Participation | 15%       |
+| Assignments             | 50%        |
+| Case Study              | 35%        |
 
 ## Attendance and participation
 
 I do not have any special requirements for attendance nor participations other than the requirements set by the program. Consult the program's regulation handbook for more information. I encourage you to participate in class and ask questions, as this will help you understand the material better. Statistics typically inspires frustation, so it is important to ask questions when you are confused - as any other quantitative course, the material builds up on itself, so better to understand things sooner rather than later.
 
-# Readings and course materials
+## Assignments
 
-# Software 
+There will be weekly DataCamp assignments that reinforce the material taught in this module as well as that of the sister *Intro to R* module. The assignments will focus on R implementations of statistical methods, statistical theory or other relevant topics. These will be either DataCamp courses, projects or exercises, and are graded on a pass/fail basis. They are due by 11:59pm on the Sunday of the week they are assigned, however, please check the DataCamp platform for the exact due date. As mentioned above, Stata exercises will be provided, but not graded.
 
-As mentioned, the course will also feature demonstrations of statistical concepts using Stata, a widespread software package across academic environments. Further, I will provide practice exercises to be solved with this language. These will not be graded, but feedback will provided to those that want it. I will not introduce the use of Stata, as it is assumed all students have already taken and succesfully passed the introductory course on Stata from our last module, *Intro to Stata*. However, I will answer questions and provide personalized help to those who need it, conditional on available time.
+## Case study 
 
-# Module policies
+The case study is due the last day of class. The case study involves using the skills gained in this module as well as the *Intro to R* module to analyze the provided case study dataset in groups of 5-6 students. Each group will present their findings in 10-minute academic-style presentation. followed by a 5-minute questions and answers (Q&A) session by the instructor and the rest of the class. A handout will be provided with the case study details and rubric. 
 
-## Communication
+# Course materials
 
-All communications to the instructor or teaching assistant (TA) should be made through the course's Slack channel. We hope to respond to questions within 72 hours, but please be patient if we take longer.
+All course materials will be provided in the course's GitHub repository. This includes lecture slides, readings, datasets, assignments and any other relevant material. The repository will be updated regularly, so please check it often for new material. I recommend using a Git client, such as GitHub Desktop or GitKraken, to keep your local repository up-to-date.
+
+## Readings
+
+A reading will be assigned for each lecture. These can be academic or general articles that will be used as to illustrate the concepts covered in class. Students are expected to read the assigned readings before class and be prepared to discuss them. Files for all readings will be provided in the course's GitHub repository.
+
+When readings are academic articles, students should not expect to fully understand the methods used in the paper. This module is an introduction to statistics, so students will progressively learn the methods used in the readings as the course progresses. Students should focus on the specific part the reading was assigned for, as well as the paper's objective, a general overview of the methods and any applicable public policy implications. For example, for @ahmed_etal13, the focus is on understanding Table 1. 
+
+## Textbook
+
+There is no required textbook for this course, as I will provide slides for all lectures However, I recommend the following books for those who want to delve deeper into the material. These were used as references for the course. 
+
+- *Statistics for Business and Economics*,  @anderson_etal20.
+
+- The statistics review in *Introductory econometrics: A modern approach*, @wooldridge20.
+
+- *Using R for Introductory Econometrics*, @heiss20^[This book contains R implementations of Wooldridge's textbook, with code uploaded [here](http://urfie.net).]
+
+- *Discovering statistics using R*, @field_etal12.
+
+- The Effect, @huntington-klein22^[This textbook, while focused on causality, describes much of the modern R development environment for statistics and econometrics. It also contains Stata and Python code.].
+
+## Software
+
+The course will mainly use R [@rcoreteam24] for practical implementations of the statistical concepts covered in class. R is a free and open-source software which has growingly become the standard for advanced statistical analysis. The sister module to this course, *Intro to R*, introduces the language in depth, focusing on technical aspects, while here we mostly use it as a tool to understand statistical concepts.
+
+Further, the course will also feature demonstrations of statistical concepts using Stata, a widespread software package across academic environments. Further, I will provide practice exercises to be solved with this language. These will not be graded, but feedback will provided to those that want it. I will not introduce the use of Stata, as it is assumed all students have already taken and succesfully passed the introductory course on Stata from our last module, *Intro to Stata*. However, I will answer questions and provide personalized help to those who need it, conditional on available time. It is recommended that students review @huntington-klein22 for comparisons on R-Stata syntax in statistical analysis. 
+
+Finally, I will use Git and GitHub for version control and to distribute course materials. I will not introduce or evaluate the use of Git, as it is assumed all students have already taken and succesfully passed the introductory course on Git. 
+
+# Communication
+
+All communications to the instructor or teaching assistant (TA) should be made through the course's Slack channel. We hope to respond to questions within 72 hours, but please be patient if we take longer. I do not monitor email regularly, so please use Slack for all communications if you need a timely response.
 
 
 # References
