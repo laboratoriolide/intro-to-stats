@@ -3,7 +3,7 @@ title: "Intro to statistics"
 subtitle: "A brief introduction to applied statistics for quantitative social science research"
 author: "Laboratorio de Investigación para el Desarrollo del Ecuador"
 format: pdf
-bibliography: bibliography-files/references.bib
+bibliography: bibliography-files/syllabus-references.bib
 number-sections: true
 ---
 
