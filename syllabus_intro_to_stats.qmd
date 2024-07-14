@@ -1,5 +1,5 @@
 ---
-title: "Intro to statistics"
+title: "Introduction to Statistics"
 subtitle: "A brief introduction to applied statistics for quantitative social science research"
 author: "Laboratorio de Investigación para el Desarrollo del Ecuador"
 format: pdf
@@ -15,9 +15,11 @@ number-sections: true
 
 **Prerequisite knowledge**: Basic arithmetic, algebra, cartesian graphing, Stata scripting, Git. 
 
+**Corequisites**: **Introduction to R** module.
+
 **GitHub repository**: [https://github.com/laboratoriolide/intro-to-stats](https://github.com/laboratoriolide/intro-to-stats)
 
-# Course overview
+# Overview
 
 This course introduces statistics at a basic level, focusing on its application to quantitative social science research. The course assumes no prior knowledge of statistics, but students will reach an intermediate level of undergraduate statistics by the end of the course. The material will not be proof-heavy, however, it will be rigorous enough to prepare you for the more advanced modules in the program (econometrics, causal inference, etc.)
 
@@ -119,7 +121,7 @@ I do not have any special requirements for attendance nor participations other t
 
 ## Assignments
 
-There will be weekly DataCamp assignments that reinforce the material taught in this module as well as that of the sister *Intro to R* module. The assignments will focus on R implementations of statistical methods, statistical theory or other relevant topics. These will be either DataCamp courses, projects or exercises, and are graded on a pass/fail basis. They are due by 11:59pm on the Sunday of the week they are assigned, however, please check the DataCamp platform for the exact due date. As mentioned above, Stata exercises will be provided, but not graded.
+There will be weekly DataCamp assignments that reinforce the material taught in this module as well as that of the sister *Intro to R* module. The assignments will focus on R implementations of statistical methods, statistical theory or other relevant topics. These will be either DataCamp courses, projects or exercises, and are graded on a pass/fail basis. Please check the DataCamp platform for exact due dates. Further, as mentioned above, Stata exercises will be provided, but not graded.
 
 ## Case study 
 
