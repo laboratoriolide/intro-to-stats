@@ -135,7 +135,7 @@ All course materials will be provided in the course's GitHub repository. This in
 
 A reading will be assigned for each lecture. These can be academic or general articles that will be used as to illustrate the concepts covered in class. Students are expected to read the assigned readings before class and be prepared to discuss them. Files for all readings will be provided in the course's GitHub repository.
 
-When readings are academic articles, students should not expect to fully understand the methods used in the paper. This module is an introduction to statistics, so students will progressively learn the methods used in the readings as the course progresses. Students should focus on the specific part the reading was assigned for, as well as the paper's objective, a general overview of the methods and any applicable public policy implications. For example, for @ahmed_etal13, the focus is on understanding Table 1. 
+When readings are academic articles, students should not expect to fully understand the methods used in the paper. This module is an introduction to statistics, so students will progressively learn the methods used in the readings as the course progresses. Further, students should not be taking too much time to read papers as it will quickly become overwhelming considering the module's course load, instead, developing the ability to skim and understand the main points of a paper is more important. Students should focus on the specific part the reading was assigned for, as well as the paper's objective, a general overview of the methods and any applicable public policy implications. For example, for @ahmed_etal13, the focus is on understanding Table 1. 
 
 ## Textbook
 
