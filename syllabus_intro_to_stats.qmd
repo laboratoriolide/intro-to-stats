@@ -161,7 +161,7 @@ Finally, I will use Git and GitHub for version control and to distribute course 
 
 # Communication
 
-All communications to the instructor or teaching assistant (TA) should be made through the course's Slack channel. We hope to respond to questions within 72 hours, but please be patient if we take longer. I do not monitor email regularly, so please use Slack for all communications if you need a timely response.
+All communications to the instructor should be made through the course's Slack channel. I hope to respond to questions within 72 hours, but please be patient if we take longer. I do not monitor email regularly, so please use Slack for all communications if you need a timely response.
 
 
 # References
