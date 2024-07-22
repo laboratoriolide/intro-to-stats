@@ -15,7 +15,7 @@ number-sections: true
 
 **Prerequisite knowledge**: Basic arithmetic, algebra, cartesian graphing, Stata scripting, Git. 
 
-**Corequisites**: **Introduction to R** module.
+**Corequisites**: *Introduction to R* module.
 
 **GitHub repository**: [https://github.com/laboratoriolide/intro-to-stats](https://github.com/laboratoriolide/intro-to-stats)
 
@@ -151,7 +151,7 @@ There is no required textbook for this course, as I will provide slides for all 
 
 - The Effect, @huntington-klein22^[This textbook, while focused on causality, describes much of the modern R development environment for statistics and econometrics. It also contains Stata and Python code.].
 
-- The Library of Statistical Techniques (LOST)[https://lost-stats.github.io/]^[An open-source website with a collection of statistical techniques and their implementations in R, Python and Stata. It is a great resource for those who want to learn more about specific statistical methods.].
+- The Library of Statistical Techniques [LOST](https://lost-stats.github.io/)^[An open-source website with a collection of statistical techniques and their implementations in R, Python and Stata. It is a great resource for those who want to learn more about specific statistical methods.].
 
 ## Software
 
