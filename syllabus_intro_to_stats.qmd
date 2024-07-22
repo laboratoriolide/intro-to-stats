@@ -123,6 +123,18 @@ I do not have any special requirements for attendance nor participations other t
 
 There will be weekly DataCamp assignments that reinforce the material taught in this module as well as that of the sister *Intro to R* module. The assignments will focus on R implementations of statistical methods, statistical theory or other relevant topics. These will be either DataCamp courses, projects or exercises, and are graded on a pass/fail basis. Please check the DataCamp platform for exact due dates. Further, as mentioned above, Stata exercises will be provided, but not graded.
 
+### DataCamp assignments
+
+The following is a tentative list of DataCamp assignments. This may change depending on the pace of the class, so please check the DataCamp platform for the most up-to-date assignments.
+
+- Introduction to Statistics in R
+- Foundations of Probability in R (select chapters)
+- Sampling in R (select chapters)
+- Hypothesis Testing in R (select chapters)
+- Foundations of Inference in R (select chapters)
+- Experimental Design in R (select chapters)
+
+
 ## Case study 
 
 The case study is due the last day of class. The case study involves using the skills gained in this module as well as the *Intro to R* module to analyze the provided case study dataset in groups of 5-6 students. Each group will present their findings in 10-minute academic-style presentation. followed by a 5-minute questions and answers (Q&A) session by the instructor and the rest of the class. A handout will be provided with the case study details and rubric. 
