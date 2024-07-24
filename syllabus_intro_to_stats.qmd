@@ -171,7 +171,11 @@ The course will mainly use R [@rcoreteam24] for practical implementations of the
 
 Further, the course will also feature demonstrations of statistical concepts using Stata, a widespread software package across academic environments. Further, I will provide practice exercises to be solved with this language. These will not be graded, but feedback will provided to those that want it. I will not introduce the use of Stata, as it is assumed all students have already taken and succesfully passed the introductory course on Stata from our last module, *Intro to Stata*. However, I will answer questions and provide personalized help to those who need it, conditional on available time. It is recommended that students review @huntington-klein22 for comparisons on R-Stata syntax in statistical analysis. 
 
-Finally, I will use Git and GitHub for version control and to distribute course materials. I will not introduce or evaluate the use of Git, as it is assumed all students have already taken and succesfully passed the introductory course on Git. 
+Finally, I will use Git and GitHub for version control and to distribute course materials. I will not introduce or evaluate the use of Git, as it is assumed all students have already taken and succesfully passed the introductory course on Git.
+
+# Keyboard layout
+
+We will routinely need to type symbols like "/", "<-", "%>%", and others. Make sure you are comfortable with your keyboard layout and that you can type these symbols easily. This may seem trivial, but it is important for the course, as we absolutely cannot afford to lose time finding symbols on the keyboard. You may need to change your keyboard layout to the correct language so that the computer follows the physical layout of your keyboard. For Windows users, this is easily done by pressing `Win + Space` and selecting the correct layout (see [here](https://support.microsoft.com/en-us/windows/change-your-keyboard-layout-245c49b8-f856-7fd7-2cf5-41e54c66f5b3))^[Mac and Linux Users, sorry, you're on your own here.].
 
 # Communication
 
