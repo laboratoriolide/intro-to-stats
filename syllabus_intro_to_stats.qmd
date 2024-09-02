@@ -67,6 +67,7 @@ The following is a planned outline of the course. This may change depending on t
     - Significance levels (alpha)
     - Margin of error with sampling distributions
     - Confidence intervals and their interpretation, hypothesis testing with CIs
+    - Avoiding dynamite plots
     -  **Assigned reading**: @barbayannis_etal22, with attention to the research question, charts and discussion, less on methods being used. 
 
 - **Lecture 6**: Hypothesis testing
