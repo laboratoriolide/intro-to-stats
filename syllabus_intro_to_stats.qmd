@@ -23,25 +23,25 @@ number-sections: true
 
 This course introduces statistics at a basic level, focusing on its application to quantitative social science research. The course assumes no prior knowledge of statistics, but students will reach an intermediate level of undergraduate statistics by the end of the course. The material will not be proof-heavy, however, it will be rigorous enough to prepare you for the more advanced modules in the program (econometrics, causal inference, etc.)
 
-A good grasp of statistics cannot be achieved with theory alone. I will provide practical implementations of what we cover during class mainly using R and, to a significantly lesser extent, Stata. The sister module to this course, *Intro to R*, will focus on the practical implementations and technical aspects, while this course will focus on theory and intuition. To best understand the material, students should have a basic understanding of arithmetic, algebra and cartesian graphs (i.e. x-y plots). This was provided in the introductory mathematics course at the beginning of the program. 
+A good grasp of statistics cannot be achieved with theory alone. I will provide practical implementations of what we cover during class mainly using R and, to a significantly lesser extent, Stata. The companion module, *Intro to R*, will focus on technical aspects of the language, while this course will focus on theory, intuition and applications specific to statistics. To best understand the material, students should have a basic understanding of arithmetic, algebra and cartesian graphs (i.e. x-y plots). This was provided in the introductory mathematics course at the beginning of the program (Math for Social Sciences)^[Materials are available in the Google Drive and LIDE GitHub org for review if needed.].
 
 # Module contents {#sec-contents}
 
-The following is a planned outline of the course. This may change depending on the pace of the class. Each lecture will have one or two assigned readings, which will all be academic articles submitted to the course's [GitHub repository](https://github.com/laboratoriolide/intro-to-stats). See below for details on these readings.
+The following is a planned outline of the course. This may change depending on the pace of the class. Each lecture will have one or two assigned readings, which will all be academic articles submitted to the course's [GitHub repository](https://github.com/laboratoriolide/intro-to-stats).
 
 - **Lecture 1**: Intro
     - Introduction to statistics: what is it and why do we need it in social science research?
     - Observations, variables, data types, data formats
     - Populations vs. samples
     - Descriptive vs. inferential statistics
-    - **Assigned reading**: Course syllabus, @brown98
+    - **Assigned reading**: Course syllabus, @brown98.
 
 - **Lecture 2**: Descriptive statistics and statistical data visualization
     - Measures of central tendency: mean, median, mode
     - Measures of dispersion: variance, standard deviation, range, IQR
     - Measures of distributional shape: skewness, kurtosis
     - Data visualization: histograms, box plots, scatter plots, cumulative distributions 
-    -  **Assigned reading**: @lupu_zechmeister20, prepare to replicate charts and apply descriptive statistics to the dataset (file provided on GitHub)
+    -  **Assigned reading**: @lupu_zechmeister20, prepare to replicate charts and apply descriptive statistics to the dataset (file provided on GitHub).
 
 - **Lecture 3**: A brief introduction to probability
     - Why probability?
@@ -51,13 +51,13 @@ The following is a planned outline of the course. This may change depending on t
     - The normal distribution and its properties, the empirical rule
     - The standard normal distribution and $z$-scores
     - **Assigned reading**: @redaccionprimicias20, will be used for a class exercise.
-    - Time-permitting: bootstrapping
+    - Time-permitting: bootstrapping.
 
 - **Lecture 4**: Statistical inference
     - What is statistical inference?
     - Sampling distributions
     - The central limit theorem and the law of large numbers
-    - Expected value, variance and standard errors
+    - Expected value, variance and standard errors, use of operators.
     - Using simulation to understand sampling distributions
     - **Assigned reading**: None, see DataCamp platform for assignments. 
 
@@ -135,7 +135,6 @@ The following is a tentative list of DataCamp assignments. This may change depen
 - Foundations of Inference in R (select chapters)
 - Experimental Design in R (select chapters)
 
-
 ## Case study 
 
 The case study is due the last day of class. The case study involves using the skills gained in this module as well as the *Intro to R* module to analyze the provided case study dataset in groups of 5-6 students. Each group will present their findings in 10-minute academic-style presentation. followed by a 5-minute questions and answers (Q&A) session by the instructor and the rest of the class. A handout will be provided with the case study details and rubric. 
@@ -181,7 +180,6 @@ We will routinely need to type symbols like "/", "<-", "%>%", and others. Make s
 # Communication
 
 All communications to the instructor should be made through the course's Slack channel. I hope to respond to questions within 72 hours, but please be patient if we take longer. I do not monitor email regularly, so please use Slack for all communications if you need a timely response.
-
 
 # References
 
