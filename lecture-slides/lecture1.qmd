@@ -210,3 +210,13 @@ creation_show %>%
 - We will never have multiple rows for the same province in the wide format.
 
 - If a province does not create businesses in a given year, we will have missing values.
+
+# Sources of data
+
+## Where do we get data for statistical analysis?
+
+1. Experimental studies
+
+2. Observational studies
+
+3. Secondary sources (existing datasets)
