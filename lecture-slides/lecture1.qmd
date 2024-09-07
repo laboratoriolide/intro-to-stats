@@ -16,7 +16,22 @@ include-in-header:
         \usecolortheme[named=black]{structure}
         \usepackage{tikz}
         \usepackage{pgfplots}
+knitr:
+    opts_chunk: 
+      echo: false
+      message: false
+      warning: false
 ---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(readxl)
+library(dplyr)
+library(kableExtra)
+
+```
 
 # What is statistics?
 
@@ -53,3 +68,14 @@ include-in-header:
     - Ordinal data: categories with order (e.g., levels of satisfaction).
 
 # How a dataset might look like
+
+```{r}
+#| label: example-dataset-supercias
+
+# Load the SUPERCIAS dataset
+
+# supercias_raw <- read_excel("data/directorio_companias_supercias.xlsx", skip = 4)
+
+save(supercias_raw, file = "data/supercias_raw.RData")
+
+```
