@@ -24,7 +24,7 @@ library(modelsummary)
 library(gridExtra)
 ```
 
-# Sessions 1-3: Introduction to Data and Statistics
+# Introduction 
 
 Statistics is the science of collecting, organizing, analyzing, and
 interpreting data in order to make decisions. Statistics is also a
