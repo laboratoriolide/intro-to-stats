@@ -1,8 +1,10 @@
 ---
-title: "Statistics 101"
-subtitle: "Proudly built with R, Quarto and GitHub Copilot"
+title: "Lecture 1 Notes: Introduction"
+subtitle: "Young Researchers Fellowship Program"
+institute: "Laboratorio de Investigación para el Desarrollo del Ecuador"
 author: "Daniel Sánchez Pazmiño"
-date: ""
+date: "2024-09-01"
+date-format: "MMMM YYYY"
 format: pdf
 toc: true
 knitr:

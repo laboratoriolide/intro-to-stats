@@ -30,10 +30,33 @@ knitr:
 library(readxl)
 library(dplyr)
 library(kableExtra)
+library(readr)
+library(here)
+library(lubridate)
+library(tidyr)
+
+# Prelim data cleaning
+
+# Load the SUPERCIAS dataset
+
+# supercias_raw <- read_excel("data/directorio_companias_supercias.xlsx", skip = 4)
+
+# supercias_raw <- supercias_raw %>%
+    #janitor::clean_names() %>%
+    #mutate(capital_suscrito = parse_number(capital_suscrito, 
+                                           #locale = locale(decimal_mark = ",", grouping_mark = ".")))
+
+#save(supercias_raw, file = "data/supercias_raw.RData")
+
+load(here("data/supercias_raw.RData"))
+
+set.seed(123)
 
 ```
 
 # What is statistics?
+
+## What is statistics?
 
 - A **methodology** for collecting, analyzing, interpreting, and presenting numerical information.
 
@@ -48,6 +71,8 @@ library(kableExtra)
 
 # Data in statistics
 
+## Data in statistics
+
 - Because statistics is concerned with information, **data** is often the starting point of any statistical analysis.
 
 - No clear definition of data can possibly satisfy everyone, but we can think of data as a collection of **facts** to be analyzed. 
@@ -55,7 +80,7 @@ library(kableExtra)
 
 - A **dataset** is a collection of data points, which can be organized in a **table**, often about a specific topic, purpose, experiment, study, or context.
 
-# Broad types of data
+## Broad types of data
 
 - Typically, statistics makes a distinction between two broad types of data:
 
@@ -67,15 +92,121 @@ library(kableExtra)
     - Nominal data: categories without order (e.g., colors).
     - Ordinal data: categories with order (e.g., levels of satisfaction).
 
-# How a dataset might look like
+## How a dataset might look like
 
 ```{r}
 #| label: example-dataset-supercias
+#| tbl-cap: Example dataset from the Ecuadorian Superintendencia de Compañías, Valores y Seguros (SUPERCIAS) companies' directory.
 
-# Load the SUPERCIAS dataset
+# Print random 5 rows, with 5 columns
 
-# supercias_raw <- read_excel("data/directorio_companias_supercias.xlsx", skip = 4)
-
-save(supercias_raw, file = "data/supercias_raw.RData")
+supercias_raw %>%
+  select("RUC" = ruc,
+         "Fecha Constitucion" = fecha_constitucion,
+         "Provincia" = provincia,
+         "Capital Suscrito" = capital_suscrito) %>%
+  sample_n(5) %>%
+  kable()
 
 ```
+
+- What type of data can be identified for each column in the dataset?
+
+## Types of datasets
+
+- Datasets can be classified into different types based on the nature of the data they contain.
+
+1. **Cross-sectional data**: data collected at a single point in time.
+    - Example: a survey conducted in 2024.
+
+2. **Time series data**: data collected over time at regular intervals, for a single entity.a
+    - Example: monthly sales data from 2020 to 2024.
+
+3. **Panel data**: data collected over time for multiple entities.
+    - Example: monthly sales data from 2020 to 2024 for multiple companies.
+
+- Often, we also hear about repeated or pooled cross-sectional data, which is a combination of cross-sectional and time series data; we observe multiple cross-sections at different points in time.
+
+# Tabular data logic
+
+## Tabular data logic
+
+- A dataset is typically organized in a **table** with rows and columns.
+
+- Datasets often collect characteristics of individuals or entities, which are typically referred to as **elements**.
+    - Elements are not necessarily the observations in a dataset, elements are those entities or individuals for which we hold information. 
+
+- When data is *tidy*, a table structure typically allows for easy identification of the following elements:
+    - We will talk more about **tidy data** concept in the R companion module.
+
+1. **Variables**: columns in the table, which represent a characteristic of an element.
+2. **Observations**: rows in the table, which represent a collection of variable values for a single element.
+
+## Elements are not observations 
+
+- Sometimes, elements in a dataset (for the SUPERCIAS dataset, companies) are not the same as observations.
+
+- We may observe multiple observations for a single element, which is why we need to be clear about the distinction between elements and observations.
+
+- When we observe multiple observations for a single element, we typically refer to this as **repeated measures** or **panel data**.
+
+- It is in this context when it comes in handy to difference between long and wide format datasets.
+
+## Long vs. wide format
+
+- Long vs. wide format refers to the way data is organized in a table. 
+
+- In the **long format**, each row represents a single observation, and each column represents a variable.
+
+- In the **wide format**, each row typically represents a single element. Columns may represent variables, but also repeated measures or time points of the same variable. 
+
+## Example of long vs. wide format - business creation per province
+
+- Long format: each row represents a single observation (business creation per province per year).
+
+```{r}
+#| label: example-long-vs-wide
+#| tbl-cap: Long format business creation per province (SUPERCIAS)
+
+# Create a dataset with business creation per province
+
+business_creation <- 
+  supercias_raw %>%
+  mutate(creation_date = dmy(fecha_constitucion),
+         year_creation = year(creation_date)) %>%
+  count(provincia, year_creation)
+
+creation_show <-
+business_creation %>%
+  filter(year_creation > 2009) %>% 
+  sample_n(5) %>%
+  transmute("Province" = provincia,
+            "Year" = year_creation,
+            "Number of businesses created" = n)
+
+creation_show %>%
+  kable()
+```
+
+- Notice that if a province creates businesses in multiple years, we will have multiple rows for the same province.
+
+- If a province does not create businesses in a given year, we will not have a row for that province.
+
+## Example of long vs. wide format - business creation per province
+
+- Wide format: each row represents a single element (province), and columns represent variables (business creation per year).
+
+```{r}
+#| label: example-long-vs-wide-wide
+#| tbl-cap: Wide format business creation per province (SUPERCIAS)
+
+# Create a dataset with business creation per province
+
+creation_show %>%
+  pivot_wider(names_from = Year, values_from = `Number of businesses created`) %>%
+  kable()
+```
+
+- We will never have multiple rows for the same province in the wide format.
+
+- If a province does not create businesses in a given year, we will have missing values.
