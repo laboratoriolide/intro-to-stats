@@ -392,10 +392,3 @@ kable(head(mode_capital_suscrito))
 ```stata
 summarize capital_suscrito, detail
 ```
-
-
-
-
-
-
-
