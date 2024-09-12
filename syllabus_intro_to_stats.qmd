@@ -128,7 +128,7 @@ There will be weekly DataCamp assignments that reinforce the material taught in 
 
 The following is a tentative list of DataCamp assignments. This may change depending on the pace of the class, so please check the DataCamp platform for the most up-to-date assignments.
 
-- Introduction to Statistics in R
+- Introduction to Statistics in R **(will be optional, for 1pt extra credit due September 22)**
 - Foundations of Probability in R (select chapters)
 - Sampling in R (select chapters)
 - Hypothesis Testing in R (select chapters)

@@ -1,5 +1,5 @@
 ---
-title: "Lecture 1 Notes: Introduction"
+title: "Lecture 1 & 2 Notes, pt. 1"
 subtitle: "Young Researchers Fellowship Program"
 institute: "Laboratorio de Investigación para el Desarrollo del Ecuador"
 author: "Daniel Sánchez Pazmiño"
@@ -878,32 +878,3 @@ applied to the sample variance to make it an unbiased estimator of the
 population variance. We will not go into the details of this correction
 here. But it is important to know that the sample variance is calculated
 differently than the population variance.
-
-## Summary of Sessions 1-3
-
--   Statistics is the science of collecting, analysing, and interpreting
-    data.
--   Data can be presented in tables which are long or wide. Long tables
-    have multiple observations per element, whereas short or wide tables
-    have one observation per element.
--   Data can be categorical or numerical, and it can be presented in
-    cross sectional, time-series, or panel format.
--   Categorical data can be visualised using bar charts, pie charts,
-    donut charts, and waffle charts.
--   Numerical data can be visualised using histograms and cumulative
-    distributions.
--   Descriptive statistics is the branch of statistics that deals with
-    describing data.
--   The most important descriptive statistics of central tendency and
-    variability are the mean, the median, the mode, the variance, and
-    the standard deviation.
--   The mean is the average of the data, the median is the middle value
-    of the data, and the mode is the most frequent value of the data.
--   The variance is the average squared distance from the mean, and the
-    standard deviation is the square root of the variance.
--   Inferential statistics is the branch of statistics that deals with
-    making inferences about a population based on a sample.
--   The difference of calculation at the sample vs. population level is
-    the Bessel's correction, which is applied to the sample variance to
-    make it an unbiased estimator of the population variance. Instead of
-    dividing by $N$, we divide by $n-1$ in the sample variance.

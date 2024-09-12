@@ -464,7 +464,7 @@ $$ \text{CV} = \frac{s}{\overbar{x}} $$
     - **Quartiles**: values that divide the data into four equal parts.
     - **Deciles**: values that divide the data into ten equal parts.
     - **Z-scores**: the number of standard deviations a data point is from the mean.
-
+    
 ## Percentiles
 
 - Percentiles are values below which a given percentage $p$ of observations fall.
@@ -477,11 +477,217 @@ $$ \text{Percentile}_p = \left( \frac{p}{100} \right) (n + 1) $$
 
 - The median is the 50th percentile.
 
+## Quartiles and deciles
+
+- **Quartiles** are values that divide the data into four equal parts.
+    - The first quartile (Q1) is the 25th percentile.
+    - The second quartile (Q2) is the median.
+    - The third quartile (Q3) is the 75th percentile.
+
+- **Deciles** are values that divide the data into ten equal parts.
+    - The first decile (D1) is the 10th percentile.
+    - The second decile (D2) is the 20th percentile.
+    - And so on...
+
+- The "five-number summary" includes the minimum, Q1, median, Q3, and maximum. 
+    - Provides a quick summary of the data distribution.
+
+## The interquartile range (IQR)
+
+- The **interquartile range (IQR)** is the difference between the third and first quartiles.
+    - Technically a measure of spread/variability, yet requires quartiles to calculate.
+
+$$ \text{IQR} = Q3 - Q1 $$
+
+- The IQR is less sensitive to outliers than the range.
+    - It is a better measure of spread for datasets with very large or very small values.
+
+## $Z$-scores
+
+- The $Z$-score is the number of standard deviations an observation is from the mean.
+
+- The $Z$-score is calculated as:
+
+$$ Z = \frac{x - \overbar{x}}{s} $$
+
+- The $Z$-score tells us how many standard deviations a data point is from the mean.
+    - A $Z$-score of 0 means the data point is at the mean.
+    - A $Z$-score of 1 means the data point is one standard deviation above the mean.
+
+- The $Z$-score is useful for identifying outliers in a dataset.
+
+## Outliers
+
+- An **outlier** is an observation that is significantly different from other observations in the dataset.
+
+- Outliers can be due to errors in data collection, measurement error, or a true anomaly in the data.
+    - Either very large or very small values.
+
+- Outliers can significantly affect the mean and standard deviation, making them less representative of the data.
+
+- The $Z$-score is useful for identifying outliers in a dataset.
+    - Typically, a $Z$-score greater than 3 or less than -3 is considered an outlier (we'll discuss this later).
+
+## R implementation for position measures
+
+- Use the base R function `quantile()` to calculate percentiles, which will also calculate quartiles, deciles, etc.
+
+- The `probs` argument specifies the percentiles to calculate.
+
+- You may need to use the `na.rm = TRUE` argument to remove missing values, depending on the dataset.
+
+- Use `IQR(x)` to calculate the interquartile range.
+
+## R implementation for position measures
+
+```{r}
+#| label: percentile-calculation
+#| echo: true
+
+# Calculate the 25th, 50th, and 75th percentiles of the capital suscrito variable
+
+quantile(supercias$capital_suscrito, probs = c(0.25, 0.5, 0.75), na.rm = TRUE)
+
+# Calculate the interquartile range of the capital suscrito variable
+
+IQR(supercias$capital_suscrito, na.rm = TRUE)
+
+```
+
+## R implementation for position measures
+
+- To calculate the $Z$-score, we use the function `scale()`.
+
+- The `center` argument specifies the value to center the data around (the mean by default).
+
+- The `scale` argument specifies the value to scale the data by (the standard deviation by default).
+
+- You may need to use the `na.rm = TRUE` argument to remove missing values, depending on the dataset.
+
+- Extract a value you're interested in from the resulting object, or manually calculate the $Z$-score using the formula.
+
+## R implementation for position measures
+
+```{r}
+#| label: z-score-calculation
+#| echo: true
+
+# Calculate the Z-scores of the capital suscrito variable
+
+z_scores <- scale(supercias$capital_suscrito)
+
+head(z_scores)
+
+```
+
+## Measures of distributional shape
+
+- These descriptive statistics describe the shape of the distribution of the data.
+
+- By distribution, we mean the way the data is spread out or distributed across the range of values.
+
+- Common measures of distributional shape include:
+    - **Skewness**: a measure of the asymmetry of the data.
+    - **Kurtosis**: a measure of the "peakedness" of the data.
+
+## Skewness
+
+- **Skewness** is a measure of the asymmetry of the data distribution.
+
+- A distribution is **symmetric** if the left and right sides are mirror images of each other.
+
+- A distribution is **positively skewed** if the right tail is longer than the left tail.
+    - The mean is greater than the median.
+
+- A distribution is **negatively skewed** if the left tail is longer than the right tail.
+    - The mean is less than the median.
+
+## Skewnness
+
+- The skewness of a dataset is calculated as:
+
+$$ \text{Skewness} = \frac{\frac{1}{n} \sum_{i=1}^{n} (x_i - \overbar{x})^3}{s^3} $$
+
+- The skewness is 0 for a symmetric distribution.
+    - Positive skewness indicates a right-skewed distribution.
+    - Negative skewness indicates a left-skewed distribution.
+
+- The skewness is not as commonly used as the mean, median, and standard deviation.
+
+## How skewed distributions look like
+
+- **Symmetric distribution**: mean = median = mode.
+
+- **Right-skewed distribution**: mean > median > mode.
+
+- **Left-skewed distribution**: mean < median < mode.
+
+## How skewed distributions look like
+
+```{r}
+#| label: skewed-distributions
+#| echo: false
+
+# Generate data for symmetric, right-skewed, and left-skewed distributions
+
+set.seed(123)
+
+symmetric_data <- rnorm(1000, mean = 0, sd = 1)
+
+right_skewed_data <- rgamma(1000, shape = 2, scale = 2)
+
+left_skewed_data <- rbeta(1000, 2, 5)
+
+# Plot the distributions
+
+par(mfrow = c(1, 3))
+
+hist(symmetric_data, main = "Symmetric distribution", xlab = "Value", col = "lightblue")
+
+hist(right_skewed_data, main = "Right-skewed distribution", xlab = "Value", col = "lightblue")
+
+hist(left_skewed_data, main = "Left-skewed distribution", xlab = "Value", col = "lightblue")
+```
+
+## Kurtosis
+
+- **Kurtosis** is a measure of the "peakedness" of the data distribution.
+
+- A distribution with high kurtosis has a sharp peak and fat tails.
+    - This is called a **leptokurtic** distribution.
+    - The tails are heavier than a normal distribution.
+
+- A distribution with low kurtosis has a flat peak and thin tails.
+    - This is called a **platykurtic** distribution.
+    - The tails are lighter than a normal distribution.
+
+## Kurtosis
+
+- The kurtosis of a dataset is calculated as:
+
+$$ \text{Kurtosis} = \frac{\frac{1}{n} \sum_{i=1}^{n} (x_i - \overbar{x})^4}{s^4} $$
+
+- The kurtosis of a normal distribution is 3.
+    - A distribution with kurtosis greater than 3 is leptokurtic.
+    - A distribution with kurtosis less than 3 is platykurtic.
+
+## R implementation for shape measures
+
+- There are several packages which provide functions to calculate skewness and kurtosis.
+
+- The `e1071` package provides the `skewness()` and `kurtosis()` functions.
+
+- The `moments` package provides the `skewness()` and `kurtosis()` functions.
+
+- Base R does not have built-in functions to calculate skewness and kurtosis.
+
+- Once again, you may need to use the `na.rm = TRUE` argument to remove missing values, depending on the dataset.
+
 ## Stata implementations
 
 - You can get many of these statistics in Stata using the `summarize` command.
     - `summarize` will give you the mean, median, and other statistics for all variables in the dataset.
-    - You can use the `detail` option to get more detailed statistics.
+    - You can use the `detail` option to get more detailed statistics, which include the range, IQR, among others.
 
 ```stata
 summarize capital_suscrito, detail
@@ -496,4 +702,23 @@ summarize capital_suscrito, detail
 ```stata
 summarize capital_suscrito, meanonly
 egen cv = sd(capital_suscrito) / mean(capital_suscrito)
+```
+
+## Stata implementations
+
+- To calculate percentiles, you can use the `pctile` command.
+
+- The `pctile` command will calculate the specified percentiles for the variable.
+
+```stata
+pctile capital_suscrito, p(25 50 75)
+```
+## Stata implementations
+
+- Use the `zscore` command to calculate the $Z$-scores of a variable.
+
+- The `zscore` command will calculate the $Z$-scores of the variable, centering the data around the mean and scaling it by the standard deviation.
+
+```stata
+zscore capital_suscrito
 ```
