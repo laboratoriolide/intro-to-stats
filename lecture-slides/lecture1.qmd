@@ -18,7 +18,7 @@ include-in-header:
         \usepackage{pgfplots}
 knitr:
     opts_chunk: 
-      echo: false
+      echo: true
       message: false
       warning: false
 ---
@@ -34,6 +34,7 @@ library(readr)
 library(here)
 library(lubridate)
 library(tidyr)
+library
 
 # Prelim data cleaning
 
@@ -47,6 +48,8 @@ library(tidyr)
                                            #locale = locale(decimal_mark = ",", grouping_mark = ".")))
 
 #save(supercias_raw, file = "data/supercias_raw.RData")
+
+# write_csv(supercias_raw, here("data/supercias_raw.csv"))
 
 load(here("data/supercias_raw.RData"))
 
@@ -97,6 +100,7 @@ set.seed(123)
 ```{r}
 #| label: example-dataset-supercias
 #| tbl-cap: Example dataset from the Ecuadorian Superintendencia de Compañías, Valores y Seguros (SUPERCIAS) companies' directory.
+#| include: false
 
 # Print random 5 rows, with 5 columns
 
@@ -168,21 +172,27 @@ supercias_raw %>%
 #| label: example-long-vs-wide
 #| tbl-cap: Long format business creation per province (SUPERCIAS)
 
+supercias <-
+    supercias_raw %>%
+    mutate(creation_date = dmy(fecha_constitucion),
+           year_creation = year(creation_date))
+
 # Create a dataset with business creation per province
 
 business_creation <- 
-  supercias_raw %>%
+  supercias %>%
   mutate(creation_date = dmy(fecha_constitucion),
-         year_creation = year(creation_date)) %>%
+         year_creation = year(creation_date),
+         ) %>%
   count(provincia, year_creation)
 
 creation_show <-
-business_creation %>%
-  filter(year_creation > 2009) %>% 
-  sample_n(5) %>%
-  transmute("Province" = provincia,
-            "Year" = year_creation,
-            "Number of businesses created" = n)
+    business_creation %>%
+    filter(year_creation > 2009) %>% 
+    sample_n(5) %>%
+    transmute("Province" = provincia,
+              "Year" = year_creation,
+              "Number of businesses created" = n)
 
 creation_show %>%
   kable()
@@ -220,3 +230,166 @@ creation_show %>%
 2. Observational studies
 
 3. Secondary sources (existing datasets)
+
+# Descriptive statistics vs. statistical inference
+
+## Descriptive statistics vs. statistical inference
+
+- **Descriptive statistics** summarize and describe the main features of a dataset.
+    - Descriptive statistics are used to describe the data as it is.
+    - Examples: mean, median, mode, standard deviation, variance, etc.
+    - Tables and visualizations are commonly used as well
+
+- **Statistical inference** is the process of making predictions or inferences about a population based on a sample.
+    - A population is the entire group of individuals or entities we are interested in.
+    - A sample is a subset of the population.
+
+## Why even care about descriptive statistics?
+
+- Sometimes we do have the entire population data, but we still use descriptive statistics.
+   - E.g. a small population such as this group of students.
+
+- Sometimes gathering data from the entire population is not feasible, so we use a sample to make inferences about the population.
+
+- Descriptive statistics should be first understood well before moving to statistical inference.
+    - We later use descriptive statistics to summarize the sample data and make inferences about the population based on the sample statistics
+    - We will require an understanding of probability theory to make inferences about the population with the descriptive statistics of the sample.
+
+## Notation
+
+- In statistics, we often use the following notation:
+
+    - $n$: the number of observations in a dataset.
+    - $x_i$: the $i$-th observation in a dataset.
+
+- We often want to underscore the difference between a descriptive statistic calculated for a sample or a population.
+
+    - For a sample, we use a lowercase letter to denote the statistic (e.g., $\overbar{x}$ for the sample mean). We call this a sample statistic.
+    - For a population, we use a Greek letter to denote the statistic (e.g., $\mu$ for the population mean). We call this a population parameter.
+
+- In the rest of these slides, I will use the sample notation for simplicity. We will later discuss the difference between sample statistics and population parameters as we move to statistical inference.
+
+# Univariate descriptive statistics
+
+## Univariate data
+
+- **Univariate data** refers to data that consists of a single variable or attribute.
+
+- We are interested in summarizing single variables in a dataset.
+
+- We'll later discuss bivariate descriptive statistics, which summarize the relationship between two variables.
+
+## Central tendency measures
+
+Measures of central tendency are values that represent the center of a data set.
+
+- **Mean**: the average of the data
+- **Median**: the value that divides the data into two equal parts
+- **Mode**: the value that appears most frequently
+
+## The mean $\overbar{x}$
+
+- The average or, more specifically, the **arithmetic mean** is the sum of all observations divided by the number of observations.
+    - There are other types of means, such as the geometric mean, harmonic mean, etc.
+
+$$ \overbar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i =  \dfrac{1}{n} \left(x_1 + x_2 + \ldots + x_n\right) $$
+
+- The mean is sensitive to outliers, so use with caution.
+    - Very large or very small values can make the mean less representative of a typical value in the dataset.
+
+## Software implementation for the mean
+
+- Use the base R function `mean()` to calculate the mean of a variable.
+
+- You may need to use the `na.rm = TRUE` argument to remove missing values, depending on the dataset. 
+
+```{r}
+#| label: mean-calculation
+
+# Calculate the mean of the capital suscrito variable
+
+mean_capital_suscrito <- mean(supercias_raw$capital_suscrito, na.rm = TRUE)
+
+mean_capital_suscrito
+
+```
+
+## Median
+
+- The median is the value that divides the data into two equal parts.
+    - If the number of observations is odd, the median is the middle value.
+    - If the number of observations is even, the median is the average of the two middle values.
+
+- The median is less sensitive to outliers than the mean.
+
+$$ \text{Median} = \begin{cases} x_{(n+1)/2} & \text{if } n \text{ is odd} \\ \frac{1}{2} \left( x_{n/2} + x_{n/2 + 1} \right) & \text{if } n \text{ is even} \end{cases} $$
+
+## Software implementation for the median
+
+- Use the base R function `median()` to calculate the median of a variable.
+
+- You may need to use the `na.rm = TRUE` argument to remove missing values, depending on the dataset.
+
+```{r}
+#| label: median-calculation
+
+# Calculate the median of the capital suscrito variable
+
+median_capital_suscrito <- median(supercias$capital_suscrito, 
+                                  na.rm = TRUE)
+
+median_capital_suscrito
+```
+
+## Mode
+
+- The mode is the value that appears most frequently in the dataset.
+
+- A dataset can have multiple modes if multiple values appear with the same frequency.
+
+- The mode is not always defined, and it may not be unique.
+
+- The mode is less commonly used than the mean and median.
+
+## Software implementation for the mode
+
+- There is no built-in function in base R to calculate the mode.
+
+- You can look for a function in a package or use the `table()` function to count the frequency of each value, then find the maximum frequency.
+
+```{r}
+#| label: mode-calculation
+#| results: hide
+
+# Calculate the mode of the capital suscrito variable
+
+mode_capital_suscrito <- table(supercias$capital_suscrito)
+```
+
+## Software implementation for the mode
+
+```{r}
+#| label: mode-calculation-2
+#| echo: false
+
+# Find the maximum frequency
+
+kable(head(mode_capital_suscrito))
+```
+
+## Stata implementations
+
+- You can get many of these statistics in Stata using the `summarize` command.
+    - `summarize` will give you the mean, median, and other statistics for all variables in the dataset.
+    - You can use the `detail` option to get more detailed statistics.
+
+```stata
+summarize capital_suscrito, detail
+```
+
+
+
+
+
+
+
