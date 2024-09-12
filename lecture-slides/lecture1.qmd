@@ -383,6 +383,100 @@ mode_capital_suscrito <- table(supercias$capital_suscrito)
 kable(head(mode_capital_suscrito))
 ```
 
+## Dispersion or variability measures
+
+- **Dispersion** or **variability** measures describe how spread out the data is, or how much the data points differ from their central tendency.
+
+- Common measures of dispersion include:
+    - **Range**: the difference between the maximum and minimum values.
+    - **Variance**: the average of the squared differences from the mean.
+    - **Standard deviation**: the square root of the variance.
+    - **Variation coefficient**: the standard deviation divided by the mean.
+
+## Range
+
+- The range is the difference between the maximum and minimum values in a dataset.
+
+$$ \text{Range} = \text{Max} - \text{Min} $$
+
+- The range is sensitive to outliers, so use with caution.
+
+- Use `diff(range(x))` in R to calculate the range of a variable.
+    - Use the `na.rm = TRUE` argument to remove missing values, depending on the dataset.
+    - `range()` returns a vector with the minimum and maximum values, and `diff()` calculates the difference between them.
+
+## Variance and standard deviation
+
+- The variance is the average of the squared differences from the mean.
+
+$$ s^2 = \frac{1}{n} \sum_{i=1}^{n} (x_i - \overbar{x})^2 = \dfrac{1}{n} \left[ (x_1 - \overbar{x})^2 + (x_2 - \overbar{x})^2 + \ldots + (x_n - \overbar{x})^2 \right] $$
+
+- The standard deviation is the square root of the variance.
+
+$$ s = \sqrt{s^2} $$
+
+- The standard deviation is in the same units as the data, unlike the variance.
+    - The variance is squared, so it cannot be directly interpreted; higher variance means more spread out data, but not much else.
+
+## Implementation in R
+
+- Use the base R function `var()` to calculate the variance of a variable.
+
+- Use the base R function `sd()` to calculate the standard deviation of a variable.
+
+- You may need to use the `na.rm = TRUE` argument to remove missing values, depending on the dataset.
+
+## Implementation in R
+
+```{r}
+#| label: variance-calculation
+
+# Calculate the variance of the capital suscrito variable
+
+range(supercias$capital_suscrito, na.rm = TRUE)
+
+diff(range(supercias$capital_suscrito, na.rm = TRUE))
+
+var(supercias$capital_suscrito, na.rm = TRUE)
+
+sd(supercias$capital_suscrito, na.rm = TRUE)
+```
+
+## Coefficient of variation
+
+- The coefficient of variation is the standard deviation divided by the mean.
+
+$$ \text{CV} = \frac{s}{\overbar{x}} $$
+
+- The coefficient of variation is a relative measure of dispersion.
+    - It is useful when comparing the variability of two variables with different units or scales.
+
+- The coefficient of variation is expressed as a percentage or a proportion (decimal).
+
+- No direct function in R, but you can calculate it manually by dividing the standard deviation by the mean.
+
+## Measures of position
+
+- Measures of position describe the relative position of a data point within a dataset.
+
+- Common measures of position include:
+    - **Percentiles**: the value below which a given percentage of observations fall.
+    - **Quartiles**: values that divide the data into four equal parts.
+    - **Deciles**: values that divide the data into ten equal parts.
+    - **Z-scores**: the number of standard deviations a data point is from the mean.
+
+## Percentiles
+
+- Percentiles are values below which a given percentage $p$ of observations fall.
+
+- The $p$-th percentile is the value below which $p\%$ of the data fall.
+
+- Again, we must first sort the data from smallest to largest before calculating percentiles. Then apply the formula:
+
+$$ \text{Percentile}_p = \left( \frac{p}{100} \right) (n + 1) $$
+
+- The median is the 50th percentile.
+
 ## Stata implementations
 
 - You can get many of these statistics in Stata using the `summarize` command.
@@ -391,4 +485,15 @@ kable(head(mode_capital_suscrito))
 
 ```stata
 summarize capital_suscrito, detail
+```
+
+## Stata implementations
+
+- You can also use the `summarize` command with the `meanonly` option to get only the mean.
+
+- For the coefficient of variation, you can calculate it manually by dividing the standard deviation by the mean, using the `egen` command to create a new variable.
+
+```stata
+summarize capital_suscrito, meanonly
+egen cv = sd(capital_suscrito) / mean(capital_suscrito)
 ```

@@ -34,12 +34,12 @@ The following is a planned outline of the course. This may change depending on t
     - Observations, variables, data types, data formats
     - Populations vs. samples
     - Descriptive vs. inferential statistics
+    - Univariate descriptive statistics: measures of central tendency, dispersion, position and distributional shape
     - **Assigned reading**: Course syllabus, @brown98.
 
-- **Lecture 2**: Descriptive statistics and statistical data visualization
-    - Measures of central tendency: mean, median, mode
-    - Measures of dispersion: variance, standard deviation, range, IQR
-    - Measures of distributional shape: skewness, kurtosis
+- **Lecture 2**: More on descriptive statistics and statistical data visualization
+    - Categorical data: frequency tables, bar charts, pie charts, contingency tables
+    - Bivariate descriptive statistics: cross-tabulations, covariance, correlation, etc. 
     - Data visualization: histograms, box plots, scatter plots, cumulative distributions 
     -  **Assigned reading**: @lupu_zechmeister20, prepare to replicate charts and apply descriptive statistics to the dataset (file provided on GitHub).
 
