@@ -171,6 +171,7 @@ supercias_raw %>%
 ```{r}
 #| label: example-long-vs-wide
 #| tbl-cap: Long format business creation per province (SUPERCIAS)
+#| echo: false
 
 supercias <-
     supercias_raw %>%
@@ -209,6 +210,7 @@ creation_show %>%
 ```{r}
 #| label: example-long-vs-wide-wide
 #| tbl-cap: Wide format business creation per province (SUPERCIAS)
+#| echo: false
 
 # Create a dataset with business creation per province
 
@@ -308,7 +310,8 @@ $$ \overbar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i =  \dfrac{1}{n} \left(x_1 + x_2 
 
 # Calculate the mean of the capital suscrito variable
 
-mean_capital_suscrito <- mean(supercias_raw$capital_suscrito, na.rm = TRUE)
+mean_capital_suscrito <- mean(supercias_raw$capital_suscrito, 
+                              na.rm = TRUE)
 
 mean_capital_suscrito
 
@@ -317,10 +320,13 @@ mean_capital_suscrito
 ## Median
 
 - The median is the value that divides the data into two equal parts.
+
+- You must first sort the data from smallest to largest.
     - If the number of observations is odd, the median is the middle value.
     - If the number of observations is even, the median is the average of the two middle values.
 
 - The median is less sensitive to outliers than the mean.
+    - Typically, income data is reported using the median because it is less affected by extreme values.
 
 $$ \text{Median} = \begin{cases} x_{(n+1)/2} & \text{if } n \text{ is odd} \\ \frac{1}{2} \left( x_{n/2} + x_{n/2 + 1} \right) & \text{if } n \text{ is even} \end{cases} $$
 
