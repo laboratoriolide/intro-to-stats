@@ -722,3 +722,13 @@ pctile capital_suscrito, p(25 50 75)
 ```stata
 zscore capital_suscrito
 ```
+
+## Stata implementations
+
+- To calculate skewness and kurtosis, you can use the `sktest` command.
+
+- The `sktest` command will calculate the skewness and kurtosis of the variable.
+
+```stata
+sktest capital_suscrito
+```
