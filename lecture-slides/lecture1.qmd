@@ -695,14 +695,14 @@ summarize capital_suscrito, detail
 
 ## Stata implementations
 
-- You can also use the `summarize` command with the `meanonly` option to get only the mean.
-
 - For the coefficient of variation, you can calculate it manually by dividing the standard deviation by the mean, using the `egen` command to create a new variable.
 
 ```stata
-summarize capital_suscrito, meanonly
-egen cv = sd(capital_suscrito) / mean(capital_suscrito)
+egen m = mean(capital_suscrito)
+egen s = sd(capital_suscrito)
+gen cv = s / m
 ```
+- Any generated variable can be viewed using the `list` command or by using the `browse` command.
 
 ## Stata implementations
 
@@ -710,17 +710,20 @@ egen cv = sd(capital_suscrito) / mean(capital_suscrito)
 
 - The `pctile` command will calculate the specified percentiles for the variable.
 
+- It requires a new variable name, followed by the variable you're getting the percentiles for, and the number of "divisions" you want.
+
+- Include `return list` to get the results in a list.
+
 ```stata
-pctile capital_suscrito, p(25 50 75)
+pctile capital_suscrito_quart = capital_suscrito, nq(4)
+return list
 ```
 ## Stata implementations
 
-- Use the `zscore` command to calculate the $Z$-scores of a variable.
-
-- The `zscore` command will calculate the $Z$-scores of the variable, centering the data around the mean and scaling it by the standard deviation.
+- Generate a new variable using `gen` to calculate $Z$-scores for all observations.
 
 ```stata
-zscore capital_suscrito
+generate zscore = capital_suscrito - r(mean)/ r(sd)
 ```
 
 ## Stata implementations
