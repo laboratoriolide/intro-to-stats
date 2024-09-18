@@ -123,7 +123,7 @@ supercias_raw %>%
 1. **Cross-sectional data**: data collected at a single point in time.
     - Example: a survey conducted in 2024.
 
-2. **Time series data**: data collected over time at regular intervals, for a single entity.a
+2. **Time series data**: data collected over time at regular intervals, for a single entity
     - Example: monthly sales data from 2020 to 2024.
 
 3. **Panel data**: data collected over time for multiple entities.
