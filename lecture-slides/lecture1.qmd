@@ -271,6 +271,10 @@ creation_show %>%
 
 - In the rest of these slides, I will use the sample notation for simplicity. We will later discuss the difference between sample statistics and population parameters as we move to statistical inference.
 
+<!--
+first class until here.
+-->
+
 # Univariate descriptive statistics
 
 ## Univariate data
