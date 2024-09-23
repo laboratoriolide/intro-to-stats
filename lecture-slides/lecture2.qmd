@@ -1,0 +1,59 @@
+---
+title: Introduction to Statistics - Young Researchers Fellowship Program
+subtitle: Lecture 2 - More on descriptive statistics & statistical data visualization
+institute: Laboratorio de Investigación para el Desarrollo del Ecuador
+author: Daniel Sánchez Pazmiño
+date: 2024-09-01
+theme: berlin
+date-format: "MMMM YYYY"
+format: beamer
+incremental: false
+fontsize: 10pt
+include-in-header:
+    - text: |
+        \setbeamercolor{background canvas}{bg=white}
+        \setbeamertemplate{caption}[numbered]
+        \usecolortheme[named=black]{structure}
+        \usepackage{tikz}
+        \usepackage{pgfplots}
+knitr:
+    opts_chunk: 
+      echo: true
+      message: false
+      warning: false
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(readxl)
+library(dplyr)
+library(kableExtra)
+library(readr)
+library(here)
+library(lubridate)
+library(tidyr)
+library
+
+# Prelim data cleaning
+
+# Load the SUPERCIAS dataset
+
+# supercias_raw <- read_excel("data/directorio_companias_supercias.xlsx", skip = 4)
+
+# supercias_raw <- supercias_raw %>%
+    #janitor::clean_names() %>%
+    #mutate(capital_suscrito = parse_number(capital_suscrito, 
+                                           #locale = locale(decimal_mark = ",", grouping_mark = ".")))
+
+#save(supercias_raw, file = "data/supercias_raw.RData")
+
+# write_csv(supercias_raw, here("data/supercias_raw.csv"))
+
+load(here("data/supercias_raw.RData"))
+
+set.seed(123)
+
+```
+
