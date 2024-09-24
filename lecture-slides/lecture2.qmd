@@ -211,9 +211,9 @@ supercias %>%
 
 - For now, know that *if you take the mean of a dichotomous variable, you are calculating the proportion of the category of interest* in the dataset.
 
-$$ \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i $$
+$$ f_{dic} = \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i $$
 
-where $\bar{x}$ is the mean of the dichotomous variable, $n$ is the number of observations, and $x_i$ is the value of the dichotomous variable for observation $i$.
+where $\bar{x}$ is the mean of the dichotomous variable $dic$, $n$ is the number of observations, and $x_i$ is the value of the dichotomous variable for observation $i$.
 
 ## Dealing with dichotomous variables in R
 
@@ -224,7 +224,7 @@ where $\bar{x}$ is the mean of the dichotomous variable, $n$ is the number of ob
 
 - This would also allow you to do the reverse, recoding a categorical variable to a dichotomous variable.
 
-## Example: Dichotomous variable in SUPERCIAS dataset
+## Dealing with dichotomous variables in R
 
 - Other solutions exist for recoding dichotomous variables, such as `recode()` from `dplyr` or `if_else()` from `dplyr`.
 
@@ -232,9 +232,43 @@ where $\bar{x}$ is the mean of the dichotomous variable, $n$ is the number of ob
     - These mantain the categories and their levels (order, if applicable or a numerical value) at the same time.
 
 - We can convert a dichotomous variable to a factor using `as.factor()`.
-    - This is a base R solution, the `forcats` package from the tidyverse also has a `as_factor()` function.
+    - This is a base R solution.
 
-## Example: Dichotomous variable in SUPERCIAS dataset 
+- The `forcats` package from the tidyverse is a specialized package for dealing with factors.
+    - It has functions for reordering levels, recoding levels, and other factor-related tasks.
+
+## Example: Dichotomous variable in SUPERCIAS dataset
+
+- We can manually create dummies for dichotomous variables in the SUPERCIAS dataset through a `mutate()` call and `if_else()`.
+    - For example, we can create a dummy for `region` being `SIERRA`.
+
+```{r}
+#| label: dummy_code
+
+supercias_dummies <- supercias %>% 
+    mutate(region_sierra = if_else(region == "SIERRA", 1, 0))
+```
+
+- The proportion of `SIERRA` in the dataset can be calculated by taking the mean of the dummy variable.
+
+```{r}
+#| label: dummy_mean
+
+supercias_dummies$region_sierra %>% 
+    mean()
+```
+
+## Example: Dichotomous variable in SUPERCIAS dataset
+
+- We can verify the proportion above is correct with a frequency table.
+
+```{r}
+#| label: dummy_freq
+
+table(supercias_dummies$region) %>% prop.table()
+
+```
+
 
 # Descriptive statistics for bivariate data
 
@@ -244,3 +278,9 @@ where $\bar{x}$ is the mean of the dichotomous variable, $n$ is the number of ob
     - For example, `margin = 1` would give you the relative frequency of each row.
     - `margin = 2` would give you the relative frequency of each column.
     - The default is `margin = NULL`, which gives you the relative frequency of the entire table, which is 
+
+# Statistical data viz
+
+## Introduction
+
+- Data visualization is an important part of data analysis itself, however, statistical data visualizations are specificially designed to work well with the methods we've just learned in descriptive statistics.
