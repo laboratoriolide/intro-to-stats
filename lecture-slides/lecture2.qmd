@@ -209,7 +209,7 @@ supercias %>%
     - It is beneficial to understand the category of interest as a 1 and the other category as a 0.
     - We will talk more about these in other lectures and the Econometrics module.
 
-- For now, know that if you take the mean of a dichotomous variable, you are calculating the proportion of the category of interest in the dataset.
+- For now, know that *if you take the mean of a dichotomous variable, you are calculating the proportion of the category of interest* in the dataset.
 
 $$ \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i $$
 
@@ -233,9 +233,8 @@ where $\bar{x}$ is the mean of the dichotomous variable, $n$ is the number of ob
 
 - We can convert a dichotomous variable to a factor using `as.factor()`.
     - This is a base R solution, the `forcats` package from the tidyverse also has a `as_factor()` function.
-## Example: Dichotomous variable in SUPERCIAS dataset
 
-- 
+## Example: Dichotomous variable in SUPERCIAS dataset 
 
 # Descriptive statistics for bivariate data
 
