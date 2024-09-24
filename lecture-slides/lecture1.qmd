@@ -739,3 +739,5 @@ generate zscore = capital_suscrito - r(mean)/ r(sd)
 ```stata
 sktest capital_suscrito
 ```
+
+<!-- second class finished here -->
