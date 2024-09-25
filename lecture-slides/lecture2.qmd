@@ -21,8 +21,6 @@ knitr:
       echo: true
       message: false
       warning: false
-fig.width: 6
-fig.height: 8
 ---
 
 ```{r}
@@ -437,6 +435,7 @@ supercias %>%
 
 ```{r}
 #| label: mtcars_hist
+#| eval: false
 
 mtcars %>% 
     ggplot(aes(x = mpg)) +
@@ -464,6 +463,7 @@ mtcars %>%
 
 ```{r}
 #| label: mtcars_boxplot
+#| eval: false
 
 mtcars %>% 
     ggplot(aes(x = 1, y = mpg)) +
@@ -491,6 +491,7 @@ mtcars %>%
 
 ```{r}
 #| label: mtcars_scatter
+#| eval: false
 
 mtcars %>% 
     ggplot(aes(x = wt, y = mpg)) +
