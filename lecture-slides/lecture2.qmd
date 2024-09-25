@@ -21,6 +21,8 @@ knitr:
       echo: true
       message: false
       warning: false
+fig.width: 6
+fig.height: 8
 ---
 
 ```{r}
@@ -33,6 +35,7 @@ library(kableExtra)
 library(readr)
 library(here)
 library(lubridate)
+library(ggplot2)
 library(tidyr)
 
 # Prelim data cleaning
@@ -245,7 +248,8 @@ where $\bar{x}$ is the mean of the dichotomous variable $dic$, $n$ is the number
 ```{r}
 #| label: dummy_code
 
-supercias_dummies <- supercias %>% 
+supercias_dummies <- 
+    supercias %>% 
     mutate(region_sierra = if_else(region == "SIERRA", 1, 0))
 ```
 
@@ -266,21 +270,231 @@ supercias_dummies$region_sierra %>%
 #| label: dummy_freq
 
 table(supercias_dummies$region) %>% prop.table()
-
 ```
-
 
 # Descriptive statistics for bivariate data
 
-## Cross-tabulation
+## Measures of association
 
-    - Depending on the context, you may want to modify the `margin` argument.
-    - For example, `margin = 1` would give you the relative frequency of each row.
-    - `margin = 2` would give you the relative frequency of each column.
-    - The default is `margin = NULL`, which gives you the relative frequency of the entire table, which is 
+- Measures of association are used to describe the relationship between two variables.
+    - Also called bivariate descriptive statistics.
+
+- These are:
+    - Covariance
+    - Correlation
+    - Contingency tables
+
+## Covariance
+
+- Covariance measures association between two variables in terms of their deviation from the mean.
+
+$$ cov(x, y) = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y}) $$
+
+where $cov(x, y)$ is the covariance between variables $x$ and $y$, $n$ is the number of observations, $x_i$ and $y_i$ are the values of the variables for observation $i$, and $\bar{x}$ and $\bar{y}$ are the means of the variables.
+
+- Covariance can be positive, negative, or zero.
+    - Positive covariance means that as one variable increases, the other variable also increases.
+    - Negative covariance means that as one variable increases, the other variable decreases.
+    - Zero covariance means that there is no relationship between the variables.
+
+## Covariance
+
+- Covariance is not standardized, so it is difficult to interpret.
+    - It is affected by the scale of the variables.
+    - It is difficult to compare covariances across different datasets.
+
+- One should simply interpret the sign of the covariance, not the magnitude.
+
+## Correlation
+
+- Correlation is a standardized version of covariance.
+    - It is a measure of the strength and direction of the **linear relationship** between two variables.
+
+$$ corr(x, y) = \frac{cov(x, y)}{s_x s_y} $$
+
+- The correlation coefficient is always between -1 and 1.
+    - A correlation of 1 means that the variables are perfectly positively correlated.
+    - A correlation of -1 means that the variables are perfectly negatively correlated.
+    - A correlation of 0 means that there is no linear relationship between the variables.
+
+## Correlation
+
+- Notice that the correlation coefficient won't capture non-linear relationships.
+    - For example, a correlation of 0 doesn't mean that there is no relationship between the variables, just that there is no linear relationship.
+
+## R implementation for covariance and correlation
+
+- The `cov()` function in R calculates the covariance between two variables.
+    - It is a base R function.
+
+- The `cor()` function in R calculates the correlation between two variables.
+    - It is a base R function.
+
+- Both functions take two vectors as arguments.
+
+## Example with `mtcars`
+
+- We can calculate the covariance between `mpg` and `wt` in the `mtcars` dataset.
+
+```{r}
+#| label: mtcars_cov
+
+mtcars %>% 
+    select(mpg, wt) %>% 
+    cov()
+```
+
+## Example with `mtcars`
+
+- We can calculate the correlation between `mpg` and `wt` in the `mtcars` dataset.
+
+```{r}
+#| label: mtcars_corr
+
+mtcars %>% 
+    select(mpg, wt) %>% 
+    cor()
+```
+
+## Correlation matrices 
+
+- A correlation matrix is a table that shows the correlation between each pair of variables in a dataset.
+
+- It is a way to summarize the relationships between variables in a dataset
+
+- Often useful as an exploratory tool to understand the relationships between variables before more complex statistical analysis.
+
+## Example with `mtcars`
+
+```{r}
+#| label: mtcars_corr_matrix
+
+mtcars %>% 
+    select(mpg, disp, hp, wt) %>% 
+    cor()
+```
+
+## Contingency tables
+
+- A contingency table is a table that shows the frequency of each combination of categories in two categorical variables.
+
+- These are also called cross-tabulation tables.
+
+## Example with SUPERCIAS data
+
+- We can calculate a contingency table for the `region` and `ultimo_balance` variables in the SUPERCIAS dataset.
+
+```{r}
+#| label: cont_table
+
+supercias %>% 
+    count(region, ultimo_balance)
+```
+
+## R implementations
+
+- We may also feed two columns to the `table()` function to calculate a contingency table.
+
+- Depending on the context, you may want to modify the `margin` argument.
+- For example, `margin = 1` would give you the relative frequency of each row.
+- `margin = 2` would give you the relative frequency of each column.
+- The default is `margin = NULL`, which gives you the relative frequency of the entire table.
 
 # Statistical data viz
 
 ## Introduction
 
 - Data visualization is an important part of data analysis itself, however, statistical data visualizations are specificially designed to work well with the methods we've just learned in descriptive statistics.
+
+- The following are common data visualization used for descriptive statistics:
+    - Histograms/density plots
+    - Boxplots
+    - Cumulative distribution plots
+    - Scatter plots
+
+## Histograms
+
+- A histogram is a graphical representation of the distribution of a numerical variable.
+
+- It typically consists of bars that represent the frequency of each interval of the variable.
+
+- The height of the bars represents the frequency of the interval.
+
+- Very important for evaluating distributional shape!
+
+## Histograms in R
+
+- The `hist()` function in R is used to create histograms.
+    - This is a base R function.
+
+- A tidy alternative is the `geom_histogram()` function from `ggplot2`.
+
+- The `geom_density()` function from `ggplot2` can be used to create a density plot, which is a smoothed version of a histogram.
+
+## Example with `mtcars`
+
+- We can create a histogram for the `mpg` variable in the `mtcars` dataset.
+
+```{r}
+#| label: mtcars_hist
+
+mtcars %>% 
+    ggplot(aes(x = mpg)) +
+    geom_histogram()
+
+```
+
+## Boxplots
+
+- A boxplot is a graphical representation of the distribution of a numerical variable.
+
+- It consists of a box that represents the interquartile range (IQR) of the variable.
+
+- The line in the box represents the median of the variable.
+
+- The whiskers represent the range of the variable, excluding outliers.
+
+## Boxplots in R
+
+- The `boxplot()` function in R is used to create boxplots with base R.
+
+- The tidy alternative is the `geom_boxplot()` function from `ggplot2`.
+
+## Example with `mtcars`
+
+```{r}
+#| label: mtcars_boxplot
+
+mtcars %>% 
+    ggplot(aes(x = 1, y = mpg)) +
+    geom_boxplot()
+```
+
+## Scatter plots
+
+- A scatter plot is a graphical representation of the relationship between two numerical variables.
+
+- It consists of points that represent the values of the two variables.
+
+- The x-axis represents one variable, and the y-axis represents the other variable.
+
+- Scatter plots are useful for identifying relationships between variables.
+
+## Scatter plots in R
+
+- The `plot()` function in R is used to create scatter plots with base R.
+
+- The tidy alternative is the `geom_point()` function from `ggplot2`.
+    - Sometimes, we include a `geom_smooth()` function to add a regression line to the scatter plot (the "trend line").
+
+## Example with `mtcars`
+
+```{r}
+#| label: mtcars_scatter
+
+mtcars %>% 
+    ggplot(aes(x = wt, y = mpg)) +
+    geom_point() +
+    geom_smooth(method = "lm")
+```
+
