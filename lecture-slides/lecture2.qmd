@@ -398,7 +398,7 @@ supercias %>%
 - `margin = 2` would give you the relative frequency of each column.
 - The default is `margin = NULL`, which gives you the relative frequency of the entire table.
 
-# Statistical data viz
+# Statistical data visualization
 
 ## Introduction
 
@@ -499,3 +499,57 @@ mtcars %>%
     geom_smooth(method = "lm")
 ```
 
+## Cumulative frequency/distribution plots
+
+- A cumulative frequency plot is a graphical representation of the cumulative frequency of a numerical variable.
+
+- It consists of a line that represents the cumulative frequency of the variable.
+
+- The x-axis represents the variable, and the y-axis represents the cumulative frequency.
+
+- Cumulative frequency plots are useful for understanding the distribution of a variable.
+
+- Typically, we may want to group the variable into intervals to create a cumulative frequency plot.
+
+## Cumulative frequency in a table of frequencies
+
+- We can calculate the cumulative frequency of a variable by summing the frequencies of the variable up to a certain point.
+
+- This can be done by creating a cumulative sum of the frequencies.
+
+- The cumulative frequency of a variable is the sum of the frequencies of the variable up to that point.
+
+## Example with `SUPERCIAS`'s `capital_suscrito`
+
+- We can calculate the cumulative frequency of the `capital_suscrito` variable in the SUPERCIAS dataset.
+
+- We will first group the variable into intervals, then calculate the cumulative frequency.
+
+```{r}
+#| label: cum_freq_table
+#| results: false
+
+supercias_with_cumulative <-
+    supercias %>% 
+    mutate(capital_suscrito_interval = cut(capital_suscrito, breaks = seq(0, 100000000, by = 10000000))) %>% 
+    count(capital_suscrito_interval) %>% 
+    mutate(cumulative_frequency = cumsum(n))
+```
+
+## Example with `SUPERCIAS`'s `capital_suscrito`
+
+```{r}
+#| label: cum_freq_table2
+#| echo: false
+
+supercias_with_cumulative
+
+```
+
+## Example with `SUPERCIAS`'s `capital_suscrito`
+
+- The relative frequency of each cumulative step can be calculated by dividing the cumulative frequency by the total number of observations.
+
+- This is the cumulative relative frequency. It will be between 0 and 1 for each step.
+
+- The cumulative relative frequency for the last step will always be 1.

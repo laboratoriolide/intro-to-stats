@@ -1,0 +1,1343 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  10pt,
+  ignorenonframetext,
+]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\usetheme[]{berlin}
+\ifPDFTeX\else  
+    % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\newif\ifbibliography
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+\usepackage{caption}
+% Make caption package work with longtable
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamertemplate{caption}[numbered]
+\usecolortheme[named=black]{structure}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Introduction to Statistics - Young Researchers Fellowship Program},
+  pdfauthor={Daniel Sánchez Pazmiño},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Introduction to Statistics - Young Researchers Fellowship
+Program}
+\subtitle{Lecture 2 - More on descriptive statistics \& statistical data
+visualization}
+\author{Daniel Sánchez Pazmiño}
+\date{September 2024}
+\institute{Laboratorio de Investigación para el Desarrollo del Ecuador}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Recap}
+\phantomsection\label{recap}
+\begin{itemize}
+\tightlist
+\item
+  So far, we covered univariate descriptive statistics:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Measures of central tendency
+  \item
+    Measures of dispersion
+  \item
+    Measures of position
+  \item
+    Measures of distributional shape
+  \end{itemize}
+\item
+  We must also look at descriptive statistics in other contexts:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Categorical data descriptive stats
+  \item
+    Bivariate descriptive stats (measures of association)
+  \item
+    Statistical data visualization: boxplots, histograms, scatter plots,
+    etc.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Categorical data descriptive
+statistics}\label{categorical-data-descriptive-statistics}
+
+\begin{frame}{Describing categorical data}
+\phantomsection\label{describing-categorical-data}
+\begin{itemize}
+\item
+  Our univariate descriptive statistics applied quite well to numerical
+  data.
+\item
+  However, for categorical data, would we be able to calculate a mean?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    No, because categories are not numbers.
+  \end{itemize}
+\item
+  There are specific descriptive stats, some of them which mirror
+  numerical data stats, which should be reviewed for categorical data.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The frequency of each category
+  \item
+    Frequency tables
+  \item
+    Relative frequencies
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Frequency of ocurrence}
+\phantomsection\label{frequency-of-ocurrence}
+\begin{itemize}
+\tightlist
+\item
+  The frequency of ocurrence of a category is the number of times it
+  appears in the dataset.
+\end{itemize}
+
+\[ f = \sum_{i=1}^{n} I(x_i = c) \]
+
+where \(f\) is the frequency of category \(c\), \(n\) is the number of
+observations, and \(I\) is the indicator function. - \(I(x_i = c)\) is 1
+if \(x_i = c\) and 0 otherwise.
+
+\begin{itemize}
+\tightlist
+\item
+  This can be called the \emph{absolute frequency} of a category.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Frequency of ocurrence}
+\phantomsection\label{frequency-of-ocurrence-1}
+\begin{itemize}
+\tightlist
+\item
+  Notice that if a variable in a dataset is categorical, it may have two
+  or more categories within itself.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{sex} may have two categories: \texttt{male} and
+    \texttt{female}
+  \item
+    \texttt{ethnicity} may have multiple categories: \texttt{mestizo},
+    \texttt{afroecuadorian}, \texttt{indigenous}, etc.
+  \end{itemize}
+\item
+  Each category of a categorical variable would have its own frequency
+  of ocurrence.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Relative frequency}
+\phantomsection\label{relative-frequency}
+\begin{itemize}
+\tightlist
+\item
+  The relative frequency of a category is the proportion of times it
+  appears in the dataset.
+\end{itemize}
+
+\[ rf = \frac{f}{n} \]
+
+where \(rf\) is the relative frequency of category \(c\), \(f\) is the
+frequency of category \(c\), and \(n\) is the number of observations.
+
+\begin{itemize}
+\tightlist
+\item
+  This is given to you in \emph{proportion} form.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For example, if the relative frequency of \texttt{male} is 0.6, then
+    60\% of the dataset falls under the \texttt{male} category.
+  \item
+    Proportions are always between 0 and 1.
+  \item
+    Find a percentage by multiplying by 100, however, it is recommended
+    to keep it in proportion form for easier calculations.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Frequency tables}
+\phantomsection\label{frequency-tables}
+\begin{itemize}
+\item
+  A frequency table is a table that shows the frequency of each category
+  in a categorical variable.
+\item
+  It is a way to summarize the distribution of a categorical variable.
+\item
+  For example, consider the SUPERCIAS dataset. We can calculate the
+  frequency of each category in the \texttt{region} variable.
+\end{itemize}
+
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Var1 & Freq \\
+\midrule\noalign{}
+\endhead
+COSTA & 105744 \\
+GALÁPAGOS & 1340 \\
+ORIENTE & 7257 \\
+SIERRA & 95277 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{frame}
+
+\begin{frame}{Frequency tables}
+\phantomsection\label{frequency-tables-1}
+\begin{itemize}
+\item
+  A frequency table can be presented with both the absolute frequency
+  and the relative frequency.
+\item
+  The relative frequency is calculated by dividing the absolute
+  frequency by the total number of observations.
+\item
+  The relative frequency is a proportion, so it is always between 0 and
+  1.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Frequencies with R}
+\phantomsection\label{frequencies-with-r}
+\begin{itemize}
+\tightlist
+\item
+  We can use the \texttt{table()} function in R to calculate the
+  frequency of ocurrence of each category in a categorical variable
+  (i.e.~a table of frequencies).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Works similarly to the numerical data \texttt{table()} function.
+  \end{itemize}
+\item
+  Alternatively, use \texttt{count} from \texttt{dplyr} to calculate the
+  frequency of ocurrence of each category in a categorical variable.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This is a shorthand for \texttt{group\_by()} and
+    \texttt{summarize()} for a variable which isn't numerical.
+  \end{itemize}
+\item
+  We may extract a specific category frequency by subsetting the table
+  or using \texttt{pull()} from \texttt{dplyr}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example: SUPERCIAS dataset}
+\phantomsection\label{example-supercias-dataset}
+\begin{itemize}
+\tightlist
+\item
+  The code for the previous frequency table is as follows:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{supercias}\SpecialCharTok{$}\NormalTok{region }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+.
+    COSTA GALÁPAGOS   ORIENTE    SIERRA 
+   105744      1340      7257     95277 
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Example: SUPERCIAS dataset}
+\phantomsection\label{example-supercias-dataset-1}
+\begin{itemize}
+\tightlist
+\item
+  A tidyverse workflow for the frequency table is as follows:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# Relative frequencies}
+
+\NormalTok{supercias }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{count}\NormalTok{(region)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 4 x 2
+  region         n
+  <chr>      <int>
+1 COSTA     105744
+2 GALÁPAGOS   1340
+3 ORIENTE     7257
+4 SIERRA     95277
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{R implementation for relative frequencies}
+\phantomsection\label{r-implementation-for-relative-frequencies}
+\begin{itemize}
+\tightlist
+\item
+  For a relative frequency table, we may add an additional column to the
+  frequency table with \texttt{mutate()}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This column will be the relative frequency of each category.
+  \end{itemize}
+\item
+  A base R implementation would be passing the \texttt{table()} call to
+  \texttt{prop.table()}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example: SUPERCIAS dataset}
+\phantomsection\label{example-supercias-dataset-2}
+\begin{itemize}
+\tightlist
+\item
+  The code for the relative frequency table is as follows:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{supercias}\SpecialCharTok{$}\NormalTok{region }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{table}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{prop.table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+.
+      COSTA   GALÁPAGOS     ORIENTE      SIERRA 
+0.504460495 0.006392581 0.034620119 0.454526806 
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Example: SUPERCIAS dataset}
+\phantomsection\label{example-supercias-dataset-3}
+\begin{itemize}
+\tightlist
+\item
+  A tidyverse workflow for the relative frequency table is as follows:
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{supercias }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{count}\NormalTok{(region) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{relative\_frequency =}\NormalTok{ n }\SpecialCharTok{/} \FunctionTok{sum}\NormalTok{(n))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 4 x 3
+  region         n relative_frequency
+  <chr>      <int>              <dbl>
+1 COSTA     105744            0.504  
+2 GALÁPAGOS   1340            0.00639
+3 ORIENTE     7257            0.0346 
+4 SIERRA     95277            0.455  
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  Note how the denominator, \(n\), is the sum of the frequencies,
+  \texttt{sum(n)}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dichotomous variables}
+\phantomsection\label{dichotomous-variables}
+\begin{itemize}
+\tightlist
+\item
+  A dichotomous variable is a categorical variable with only two
+  categories, which in some cases can be represented as 0 and 1.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    These are also called binary or dummy variables.
+  \end{itemize}
+\item
+  For example, \texttt{sex} can be represented as \texttt{male} and
+  \texttt{female}, which can be coded as 0 and 1, respectively.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It's important to read the variables dictionary in a dataset to
+    understand the coding of dichotomous variables.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Dichotomous variables}
+\phantomsection\label{dichotomous-variables-1}
+\begin{itemize}
+\tightlist
+\item
+  The reason why dichotomous variables are important is that they can be
+  used in statistical models.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It is beneficial to understand the category of interest as a 1 and
+    the other category as a 0.
+  \item
+    We will talk more about these in other lectures and the Econometrics
+    module.
+  \end{itemize}
+\item
+  For now, know that \emph{if you take the mean of a dichotomous
+  variable, you are calculating the proportion of the category of
+  interest} in the dataset.
+\end{itemize}
+
+\[ f_{dic} = \bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i \]
+
+where \(\bar{x}\) is the mean of the dichotomous variable \(dic\), \(n\)
+is the number of observations, and \(x_i\) is the value of the
+dichotomous variable for observation \(i\).
+\end{frame}
+
+\begin{frame}[fragile]{Dealing with dichotomous variables in R}
+\phantomsection\label{dealing-with-dichotomous-variables-in-r}
+\begin{itemize}
+\item
+  If a variable is dichotomous, we may want to recode it to its original
+  values for better interpretation.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For example, \texttt{1} and \texttt{0} can be recoded to
+    \texttt{male} and \texttt{female}, respectively.
+  \end{itemize}
+\item
+  This can be done using \texttt{case\_when()} from \texttt{dplyr} in a
+  \texttt{mutate()} call.
+\item
+  This would also allow you to do the reverse, recoding a categorical
+  variable to a dichotomous variable.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Dealing with dichotomous variables in R}
+\phantomsection\label{dealing-with-dichotomous-variables-in-r-1}
+\begin{itemize}
+\item
+  Other solutions exist for recoding dichotomous variables, such as
+  \texttt{recode()} from \texttt{dplyr} or \texttt{if\_else()} from
+  \texttt{dplyr}.
+\item
+  However, R allows for the use of factors, which are a much more
+  effective way to deal with categorical variables for statistical
+  models.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    These mantain the categories and their levels (order, if applicable
+    or a numerical value) at the same time.
+  \end{itemize}
+\item
+  We can convert a dichotomous variable to a factor using
+  \texttt{as.factor()}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This is a base R solution.
+  \end{itemize}
+\item
+  The \texttt{forcats} package from the tidyverse is a specialized
+  package for dealing with factors.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It has functions for reordering levels, recoding levels, and other
+    factor-related tasks.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Dichotomous variable in SUPERCIAS
+dataset}
+\phantomsection\label{example-dichotomous-variable-in-supercias-dataset}
+\begin{itemize}
+\tightlist
+\item
+  We can manually create dummies for dichotomous variables in the
+  SUPERCIAS dataset through a \texttt{mutate()} call and
+  \texttt{if\_else()}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For example, we can create a dummy for \texttt{region} being
+    \texttt{SIERRA}.
+  \end{itemize}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{supercias\_dummies }\OtherTok{\textless{}{-}} 
+\NormalTok{    supercias }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{region\_sierra =} \FunctionTok{if\_else}\NormalTok{(region }\SpecialCharTok{==} \StringTok{"SIERRA"}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  The proportion of \texttt{SIERRA} in the dataset can be calculated by
+  taking the mean of the dummy variable.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{supercias\_dummies}\SpecialCharTok{$}\NormalTok{region\_sierra }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{mean}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.4545268
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Example: Dichotomous variable in SUPERCIAS
+dataset}
+\phantomsection\label{example-dichotomous-variable-in-supercias-dataset-1}
+\begin{itemize}
+\tightlist
+\item
+  We can verify the proportion above is correct with a frequency table.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(supercias\_dummies}\SpecialCharTok{$}\NormalTok{region) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{prop.table}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+
+      COSTA   GALÁPAGOS     ORIENTE      SIERRA 
+0.504460495 0.006392581 0.034620119 0.454526806 
+\end{verbatim}
+\end{frame}
+
+\section{Descriptive statistics for bivariate
+data}\label{descriptive-statistics-for-bivariate-data}
+
+\begin{frame}{Measures of association}
+\phantomsection\label{measures-of-association}
+\begin{itemize}
+\tightlist
+\item
+  Measures of association are used to describe the relationship between
+  two variables.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Also called bivariate descriptive statistics.
+  \end{itemize}
+\item
+  These are:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Covariance
+  \item
+    Correlation
+  \item
+    Contingency tables
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Covariance}
+\phantomsection\label{covariance}
+\begin{itemize}
+\tightlist
+\item
+  Covariance measures association between two variables in terms of
+  their deviation from the mean.
+\end{itemize}
+
+\[ cov(x, y) = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y}) \]
+
+where \(cov(x, y)\) is the covariance between variables \(x\) and \(y\),
+\(n\) is the number of observations, \(x_i\) and \(y_i\) are the values
+of the variables for observation \(i\), and \(\bar{x}\) and \(\bar{y}\)
+are the means of the variables.
+
+\begin{itemize}
+\tightlist
+\item
+  Covariance can be positive, negative, or zero.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Positive covariance means that as one variable increases, the other
+    variable also increases.
+  \item
+    Negative covariance means that as one variable increases, the other
+    variable decreases.
+  \item
+    Zero covariance means that there is no relationship between the
+    variables.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Covariance}
+\phantomsection\label{covariance-1}
+\begin{itemize}
+\tightlist
+\item
+  Covariance is not standardized, so it is difficult to interpret.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It is affected by the scale of the variables.
+  \item
+    It is difficult to compare covariances across different datasets.
+  \end{itemize}
+\item
+  One should simply interpret the sign of the covariance, not the
+  magnitude.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Correlation}
+\phantomsection\label{correlation}
+\begin{itemize}
+\tightlist
+\item
+  Correlation is a standardized version of covariance.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It is a measure of the strength and direction of the \textbf{linear
+    relationship} between two variables.
+  \end{itemize}
+\end{itemize}
+
+\[ corr(x, y) = \frac{cov(x, y)}{s_x s_y} \]
+
+\begin{itemize}
+\tightlist
+\item
+  The correlation coefficient is always between -1 and 1.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A correlation of 1 means that the variables are perfectly positively
+    correlated.
+  \item
+    A correlation of -1 means that the variables are perfectly
+    negatively correlated.
+  \item
+    A correlation of 0 means that there is no linear relationship
+    between the variables.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Correlation}
+\phantomsection\label{correlation-1}
+\begin{itemize}
+\tightlist
+\item
+  Notice that the correlation coefficient won't capture non-linear
+  relationships.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    For example, a correlation of 0 doesn't mean that there is no
+    relationship between the variables, just that there is no linear
+    relationship.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{R implementation for covariance and correlation}
+\phantomsection\label{r-implementation-for-covariance-and-correlation}
+\begin{itemize}
+\tightlist
+\item
+  The \texttt{cov()} function in R calculates the covariance between two
+  variables.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It is a base R function.
+  \end{itemize}
+\item
+  The \texttt{cor()} function in R calculates the correlation between
+  two variables.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It is a base R function.
+  \end{itemize}
+\item
+  Both functions take two vectors as arguments.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{mtcars}}
+\phantomsection\label{example-with-mtcars}
+\begin{itemize}
+\tightlist
+\item
+  We can calculate the covariance between \texttt{mpg} and \texttt{wt}
+  in the \texttt{mtcars} dataset.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{select}\NormalTok{(mpg, wt) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{cov}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+          mpg        wt
+mpg 36.324103 -5.116685
+wt  -5.116685  0.957379
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{mtcars}}
+\phantomsection\label{example-with-mtcars-1}
+\begin{itemize}
+\tightlist
+\item
+  We can calculate the correlation between \texttt{mpg} and \texttt{wt}
+  in the \texttt{mtcars} dataset.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{select}\NormalTok{(mpg, wt) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{cor}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+           mpg         wt
+mpg  1.0000000 -0.8676594
+wt  -0.8676594  1.0000000
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Correlation matrices}
+\phantomsection\label{correlation-matrices}
+\begin{itemize}
+\item
+  A correlation matrix is a table that shows the correlation between
+  each pair of variables in a dataset.
+\item
+  It is a way to summarize the relationships between variables in a
+  dataset
+\item
+  Often useful as an exploratory tool to understand the relationships
+  between variables before more complex statistical analysis.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{mtcars}}
+\phantomsection\label{example-with-mtcars-2}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{select}\NormalTok{(mpg, disp, hp, wt) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{cor}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+            mpg       disp         hp         wt
+mpg   1.0000000 -0.8475514 -0.7761684 -0.8676594
+disp -0.8475514  1.0000000  0.7909486  0.8879799
+hp   -0.7761684  0.7909486  1.0000000  0.6587479
+wt   -0.8676594  0.8879799  0.6587479  1.0000000
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Contingency tables}
+\phantomsection\label{contingency-tables}
+\begin{itemize}
+\item
+  A contingency table is a table that shows the frequency of each
+  combination of categories in two categorical variables.
+\item
+  These are also called cross-tabulation tables.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with SUPERCIAS data}
+\phantomsection\label{example-with-supercias-data}
+\begin{itemize}
+\tightlist
+\item
+  We can calculate a contingency table for the \texttt{region} and
+  \texttt{ultimo\_balance} variables in the SUPERCIAS dataset.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{supercias }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{count}\NormalTok{(region, ultimo\_balance)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 108 x 3
+   region ultimo_balance     n
+   <chr>  <chr>          <int>
+ 1 COSTA  1995             122
+ 2 COSTA  1996             121
+ 3 COSTA  1997             389
+ 4 COSTA  1998             310
+ 5 COSTA  1999             218
+ 6 COSTA  2000             266
+ 7 COSTA  2001             200
+ 8 COSTA  2002             206
+ 9 COSTA  2003             253
+10 COSTA  2004             328
+# i 98 more rows
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{R implementations}
+\phantomsection\label{r-implementations}
+\begin{itemize}
+\item
+  We may also feed two columns to the \texttt{table()} function to
+  calculate a contingency table.
+\item
+  Depending on the context, you may want to modify the \texttt{margin}
+  argument.
+\item
+  For example, \texttt{margin\ =\ 1} would give you the relative
+  frequency of each row.
+\item
+  \texttt{margin\ =\ 2} would give you the relative frequency of each
+  column.
+\item
+  The default is \texttt{margin\ =\ NULL}, which gives you the relative
+  frequency of the entire table.
+\end{itemize}
+\end{frame}
+
+\section{Statistical data
+visualization}\label{statistical-data-visualization}
+
+\begin{frame}{Introduction}
+\phantomsection\label{introduction}
+\begin{itemize}
+\item
+  Data visualization is an important part of data analysis itself,
+  however, statistical data visualizations are specificially designed to
+  work well with the methods we've just learned in descriptive
+  statistics.
+\item
+  The following are common data visualization used for descriptive
+  statistics:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Histograms/density plots
+  \item
+    Boxplots
+  \item
+    Cumulative distribution plots
+  \item
+    Scatter plots
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Histograms}
+\phantomsection\label{histograms}
+\begin{itemize}
+\item
+  A histogram is a graphical representation of the distribution of a
+  numerical variable.
+\item
+  It typically consists of bars that represent the frequency of each
+  interval of the variable.
+\item
+  The height of the bars represents the frequency of the interval.
+\item
+  Very important for evaluating distributional shape!
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Histograms in R}
+\phantomsection\label{histograms-in-r}
+\begin{itemize}
+\item
+  The \texttt{hist()} function in R is used to create histograms.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This is a base R function.
+  \end{itemize}
+\item
+  A tidy alternative is the \texttt{geom\_histogram()} function from
+  \texttt{ggplot2}.
+\item
+  The \texttt{geom\_density()} function from \texttt{ggplot2} can be
+  used to create a density plot, which is a smoothed version of a
+  histogram.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{mtcars}}
+\phantomsection\label{example-with-mtcars-3}
+\begin{itemize}
+\tightlist
+\item
+  We can create a histogram for the \texttt{mpg} variable in the
+  \texttt{mtcars} dataset.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ mpg)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Boxplots}
+\phantomsection\label{boxplots}
+\begin{itemize}
+\item
+  A boxplot is a graphical representation of the distribution of a
+  numerical variable.
+\item
+  It consists of a box that represents the interquartile range (IQR) of
+  the variable.
+\item
+  The line in the box represents the median of the variable.
+\item
+  The whiskers represent the range of the variable, excluding outliers.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Boxplots in R}
+\phantomsection\label{boxplots-in-r}
+\begin{itemize}
+\item
+  The \texttt{boxplot()} function in R is used to create boxplots with
+  base R.
+\item
+  The tidy alternative is the \texttt{geom\_boxplot()} function from
+  \texttt{ggplot2}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{mtcars}}
+\phantomsection\label{example-with-mtcars-4}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \DecValTok{1}\NormalTok{, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Scatter plots}
+\phantomsection\label{scatter-plots}
+\begin{itemize}
+\item
+  A scatter plot is a graphical representation of the relationship
+  between two numerical variables.
+\item
+  It consists of points that represent the values of the two variables.
+\item
+  The x-axis represents one variable, and the y-axis represents the
+  other variable.
+\item
+  Scatter plots are useful for identifying relationships between
+  variables.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Scatter plots in R}
+\phantomsection\label{scatter-plots-in-r}
+\begin{itemize}
+\item
+  The \texttt{plot()} function in R is used to create scatter plots with
+  base R.
+\item
+  The tidy alternative is the \texttt{geom\_point()} function from
+  \texttt{ggplot2}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Sometimes, we include a \texttt{geom\_smooth()} function to add a
+    regression line to the scatter plot (the ``trend line'').
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{mtcars}}
+\phantomsection\label{example-with-mtcars-5}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ wt, }\AttributeTok{y =}\NormalTok{ mpg)) }\SpecialCharTok{+}
+    \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+}
+    \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method =} \StringTok{"lm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Cumulative frequency/distribution plots}
+\phantomsection\label{cumulative-frequencydistribution-plots}
+\begin{itemize}
+\item
+  A cumulative frequency plot is a graphical representation of the
+  cumulative frequency of a numerical variable.
+\item
+  It consists of a line that represents the cumulative frequency of the
+  variable.
+\item
+  The x-axis represents the variable, and the y-axis represents the
+  cumulative frequency.
+\item
+  Cumulative frequency plots are useful for understanding the
+  distribution of a variable.
+\item
+  Typically, we may want to group the variable into intervals to create
+  a cumulative frequency plot.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cumulative frequency in a table of frequencies}
+\phantomsection\label{cumulative-frequency-in-a-table-of-frequencies}
+\begin{itemize}
+\item
+  We can calculate the cumulative frequency of a variable by summing the
+  frequencies of the variable up to a certain point.
+\item
+  This can be done by creating a cumulative sum of the frequencies.
+\item
+  The cumulative frequency of a variable is the sum of the frequencies
+  of the variable up to that point.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{SUPERCIAS}'s
+\texttt{capital\_suscrito}}
+\phantomsection\label{example-with-superciass-capital_suscrito}
+\begin{itemize}
+\item
+  We can calculate the cumulative frequency of the
+  \texttt{capital\_suscrito} variable in the SUPERCIAS dataset.
+\item
+  We will first group the variable into intervals, then calculate the
+  cumulative frequency.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{supercias\_with\_cumulative }\OtherTok{\textless{}{-}}
+\NormalTok{    supercias }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{capital\_suscrito\_interval =} \FunctionTok{cut}\NormalTok{(capital\_suscrito, }\AttributeTok{breaks =} \FunctionTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{100000000}\NormalTok{, }\AttributeTok{by =} \DecValTok{10000000}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{count}\NormalTok{(capital\_suscrito\_interval) }\SpecialCharTok{\%\textgreater{}\%} 
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{cumulative\_frequency =} \FunctionTok{cumsum}\NormalTok{(n))}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}[fragile]{Example with \texttt{SUPERCIAS}'s
+\texttt{capital\_suscrito}}
+\phantomsection\label{example-with-superciass-capital_suscrito-1}
+\begin{verbatim}
+# A tibble: 11 x 3
+   capital_suscrito_interval      n cumulative_frequency
+   <fct>                      <int>                <int>
+ 1 (0,1e+07]                 208714               208714
+ 2 (1e+07,2e+07]                229               208943
+ 3 (2e+07,3e+07]                 93               209036
+ 4 (3e+07,4e+07]                 45               209081
+ 5 (4e+07,5e+07]                 16               209097
+ 6 (5e+07,6e+07]                 14               209111
+ 7 (6e+07,7e+07]                 14               209125
+ 8 (7e+07,8e+07]                  5               209130
+ 9 (8e+07,9e+07]                  4               209134
+10 (9e+07,1e+08]                  8               209142
+11 <NA>                         476               209618
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Example with \texttt{SUPERCIAS}'s
+\texttt{capital\_suscrito}}
+\phantomsection\label{example-with-superciass-capital_suscrito-2}
+\begin{itemize}
+\item
+  The relative frequency of each cumulative step can be calculated by
+  dividing the cumulative frequency by the total number of observations.
+\item
+  This is the cumulative relative frequency. It will be between 0 and 1
+  for each step.
+\item
+  The cumulative relative frequency for the last step will always be 1.
+\end{itemize}
+\end{frame}
+
+
+
+\end{document}
