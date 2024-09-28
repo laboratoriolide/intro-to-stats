@@ -41,7 +41,7 @@ Thus, in this sense, probability is always a number between 0 and 1, where 0 mea
 
 In order to compute probabilities, we need to define the *experiment*, the *event* and the *sample space*. The experiment is the process that we are interested in, such as flipping a coin. The event is the outcome of the experiment that we are interested in, such as getting a head. The sample space is the set of all possible outcomes of the experiment, such as getting a head or a tail.
 
-We assign probabilities to certain events hapenning based on the following formula. 
+We assign probabilities to certain events happening based on the following formula. 
 
 $$P(event) = \frac{number \ of \ times \ that \ the \ event \ occurs}{total \ number \ of \ possible \ outcomes}$$
 
@@ -81,9 +81,9 @@ We also define the intersection of an event with another event as the event whic
 
 ### Mutual exclusiveness and the addition rule 
 
-When we want to know the probability of either event happenning, we can use the union. For instance, we can use the union to know the probability of getting a head **or** a tail when we flip a coin. We can also use the union to know the probability of getting a student who *either* passed or failed a course.
+When we want to know the probability of either event happening, we can use the union. For instance, we can use the union to know the probability of getting a head **or** a tail when we flip a coin. We can also use the union to know the probability of getting a student who *either* passed or failed a course.
 
-In this case, knowing the probability of either event happenning is a little trivial, since there are just two possibilities. However, if we have more than two possibilities, we can still use the union to know the probability of either event happenning. For instance, we want to know whether or not a student passed a course, failed a course or withdrew from the course. In this case, we can use the union to know the probability of a student *either* failing or withdrawing from the course.
+In this case, knowing the probability of either event happening is a little trivial, since there are just two possibilities. However, if we have more than two possibilities, we can still use the union to know the probability of either event happening. For instance, we want to know whether or not a student passed a course, failed a course or withdrew from the course. In this case, we can use the union to know the probability of a student *either* failing or withdrawing from the course.
 
 If the probability of failing the course is 0.2, and the probability of withdrawing from the course is 0.1, then the probability of either failing or withdrawing from the course is 0.2 + 0.1 = 0.3.
 
@@ -95,7 +95,7 @@ $$P(A \cup B) = P(A) + P(B)$$
 
 However, if the events are not mutually exclusive, we might run in a little problem. For instance, we might be interested of a student exhibiting mental health issues and failing a course. In this case, the student can exhibit mental health issues and fail a course at the same time, or only exhibit one of the two events. Thus, the events are not mutually exclusive.
 
-If the probability of a student exhibiting mental health issues is 0.5, and the probability of a student failing a course is 0.5, then you might be tempted to say that the probability of a student exhibiting mental health issues and failing a course is 0.5 + 0.5 = 1. A probability of 1 means that the event will always happen, which we know is not true. What happenned? 
+If the probability of a student exhibiting mental health issues is 0.5, and the probability of a student failing a course is 0.5, then you might be tempted to say that the probability of a student exhibiting mental health issues and failing a course is 0.5 + 0.5 = 1. A probability of 1 means that the event will always happen, which we know is not true. What happened? 
 
 The problem is that we counted the probability of a student exhibiting mental health issues and failing a course twice. We counted it when we computed the probability of a student exhibiting mental health issues, and we counted it when we computed the probability of a student failing a course. In the probability of a student exhibiting mental health issues, we included some students who both had mental health issues and failed a course. In the probability of a student failing a course, we included some students who both had mental health issues and failed a course. Thus, we counted the probability of a student exhibiting mental health issues and failing a course twice.
 
@@ -113,7 +113,7 @@ The *conditional probability* of an event is the probability of that event happe
 
 If we know that 50% of students in our 500 sample exhibit mental health issues, the probability of a student exhibiting mental health issues is 0.5. If we know that 50% of students failed a course, the probability of a student failing a course is 0.5. What if we want to focus *only* on the students who failed a course? What is the probability of a student exhibiting mental health issues *given* that the student failed a course?
 
-The probability of an event happenning under the condition that some other event has already hapenned is called the *conditional probability*. We denote it as $P(A|B)$, which is read as the probability of $A$ given $B$. In this case, $A$ is the event of a student exhibiting mental health issues, and $B$ is the event of a student failing a course. Thus, we want to know the probability of a student exhibiting mental health issues given that the student failed a course.
+The probability of an event happening under the condition that some other event has already happened is called the *conditional probability*. We denote it as $P(A|B)$, which is read as the probability of $A$ given $B$. In this case, $A$ is the event of a student exhibiting mental health issues, and $B$ is the event of a student failing a course. Thus, we want to know the probability of a student exhibiting mental health issues given that the student failed a course.
 
 The conditional probability is computed as follows:
 
@@ -125,7 +125,7 @@ So, if we know that out of all students, 20% of them exhibit mental health issue
 
 Two events are *independent* if the probability of one event happening does not depend on the probability of the other event happening. When two events are unrelated, they are independent. We can be pretty sure that the probability of a student failing a course does not depend on the probability of a raccoon finding a bag of trash 10 km aways from the university. Thus, we can say that the event of a student failing a course is independent of the event of a raccoon finding a bag of trash 10 km away from the university.
 
-The concept of independence is closely related to the concept of conditional probability. If two events are independent, the fact that one of them happens does not affect the other. In that sense, conditional probabilities essentially do not exist: the probability of event A happenning given that event B has happened is the same as the probability of event A happenning. 
+The concept of independence is closely related to the concept of conditional probability. If two events are independent, the fact that one of them happens does not affect the other. In that sense, conditional probabilities essentially do not exist: the probability of event A happening given that event B has happened is the same as the probability of event A happening. 
 
 So, the following properties apply to independent events:
 $$P(A|B) = P(A)$$
