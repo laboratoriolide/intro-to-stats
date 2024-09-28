@@ -51,8 +51,6 @@ generate zscore = capital_suscrito - m/s
 
 * replace zscore = capital_suscrito - m/s
 
-sktest capital_suscrito
-
 ********************************************************************************
 * Finish
 ********************************************************************************
