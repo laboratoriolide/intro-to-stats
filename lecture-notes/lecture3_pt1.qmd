@@ -1,6 +1,6 @@
 ---
 title: Introduction to Statistics - Young Researchers Fellowship Program
-subtitle: Lecture 3 - Introduction to Probability
+subtitle: Lecture 3 - Introduction to Probability, Part 1
 institute: Laboratorio de Investigación para el Desarrollo del Ecuador
 author: Daniel Sánchez Pazmiño
 date: ""
