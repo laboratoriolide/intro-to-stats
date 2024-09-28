@@ -1,3 +1,0 @@
-\beamer@sectionintoc {1}{Categorical data descriptive statistics}{3}{0}{1}
-\beamer@sectionintoc {2}{Descriptive statistics for bivariate data}{22}{0}{2}
-\beamer@sectionintoc {3}{Statistical data visualization}{36}{0}{3}
