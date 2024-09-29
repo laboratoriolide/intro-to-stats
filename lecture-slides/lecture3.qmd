@@ -22,6 +22,27 @@ knitr:
       message: false
       warning: false
 ---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(VennDiagram)
+
+# Set the seed for reproducibility
+
+set.seed(123)
+
+# Colours
+
+bc_blue <- "#003366"
+
+bc_green <- "#009900"
+
+vector_bc <- c(bc_blue, bc_green)
+
+```
+
 ## Why probability?
 
 - Probability is a foundational concept in inferential statistics.
@@ -150,6 +171,7 @@ $$ \text(P(T)) = \frac{Number of tails}{Total number of outcomes} = \frac{1}{2} 
     - We use Venn diagrams to visualize probabilities.
 
 - Set theory operators, such as belongs to ($\in$), union ($\cup$), intersection ($\cap$), and complement ($'$) are used in probability.
+    - These often also come in terms of logical operators, such as "and" and "or".
 
 ## Basic operations in probability
 
@@ -158,4 +180,196 @@ $$ \text(P(T)) = \frac{Number of tails}{Total number of outcomes} = \frac{1}{2} 
     - Intersection
     - Complement
 
-## Union of 
+## Union
+
+- The union of two events A and B is the event that _either_ A or B or both occur.
+    - Meaning that any two of them can occur, but not necessarily both.
+    - The union of A and B is denoted by $A \cup B$ (set theory notation).
+    - The probability of the union of A and B is denoted by $P(A \cup B)$.
+
+- Example: what is the probability of getting one or two when rolling a die?
+    - Notice the use of "or" in the question. Union is often associated with the "OR" logical operator.
+    - This can be written as $P(A \cup B)$, where A is the event of getting a 1 and B is the event of getting a 2.
+
+## Venn Diagrams
+
+- A Venn diagram is a visual representation of sets and their relationships.
+
+- In probability, we often use Venn diagrams to visualize the union of two events.
+
+- The union of two events is the shaded area in the Venn diagram that covers both events.
+
+## Union in a Venn diagram
+
+![Union in a Venn diagram. Source: BBC Bitesize](union.png)
+
+## Intersection
+
+- The intersection of two events A and B is the event that _both_ A and B occur.
+    - Meaning that both events must occur.
+    - The intersection of A and B is denoted by $A \cap B$ (set theory notation).
+    - The probability of the intersection of A and B is denoted by $P(A \cap B)$.
+
+- Example: what is the probability of getting an even number **and** a number less than 4 when rolling a die?
+    - Intersection is often associated with the "AND" logical operator.
+
+## Intersection in a Venn diagram
+
+![Intersection in a Venn diagram. Source: BBC Bitesize](intersection.png)
+
+## Complement
+
+- The complement of an event A is the event that A does *not* occur.
+    - Meaning that the event does not happen.
+    - The complement of A is denoted by $A'$ (set theory notation).
+    - The probability of the complement of A is denoted by $P(A')$.
+
+- Example: what is the probability of not getting a 1 when rolling a die?
+    - The complement of getting a 1 is not getting a 1.
+    - The complement of an event is often associated with the "NOT" logical operator.
+
+- It is often very easy to calculate the complement of an event, as it is the *whole* minus the probability of the event.
+
+$$ P(A') = 1 - P(A) $$
+
+## Complement in a Venn diagram
+
+![Complement in a Venn diagram. Source: BBC Bitesize](complement.jpg)
+
+## Computing the probability of union: mutually exclusive events and the addition rule
+
+- To actually calculate a probability associated with the union of two events, we need to know a little bit more about the nature of the events.
+
+- For instance, in the die example, the events of getting a 1 and getting a 2 are **mutually exclusive**
+    - This means that the events _cannot happen at the same time_.
+    - The probability of the union of mutually exclusive events is the sum of the probabilities of the events.
+
+## Union under mutually exclusive events
+
+$$ P(A \cup B) = P(A) + P(B) $$
+
+where A and B are mutually exclusive events.
+
+## Computing the probability of union: non-mutually exclusive events and the addition rule
+
+- However, if the events are not mutually exclusive, we need to consider the probability of the intersection of the events.
+
+- Events that might not be mutually exclusive happen very often. For instance, what is the probability of going to the beach and getting a sunburn?
+    - These events are not mutually exclusive, as you can go to the beach and get a sunburn at the same time.
+
+## Union under non-mutually exclusive events
+
+- If we apply the "formula" above, we will overcount the probability of the intersection of the events.
+
+- Example: the probability of finding a company that is both in Pichincha, and is listed as active.
+    - If we know the probability of finding companies in Pichincha, it will include those listed as active and otherwise.
+    - If we know the probability of finding companies listed as active, it will include those in Pichincha and otherwise.
+
+- Summing these two without doing anything else will overcount the probability of finding a company that is both in Pichincha and is listed as active.
+     - Solution: subtract the probability of the intersection of the events.
+
+## Union under non-mutually exclusive events: the addition rule
+
+- The probability of the union of two events is given by the addition rule:
+
+$$ P(A \cup B) = P(A) + P(B) - P(A \cap B) $$
+
+- This is a broad formula that can be applied to any two events, whether they are mutually exclusive or not.
+    - The intersection of two mutually exclusive events is 0, so the formula simplifies to the one we saw before.
+
+## Computing probabilities of intersection
+
+- There is no direct way to calculate the probability of the intersection of two events unless we know more. 
+
+- Some cases emerge:
+    - If we know the union of two events and their associated probabilities, we can calculate the probability of the intersection by rearranging the addition rule.
+    - If we know the events are mutually exclusive, the probability of the intersection is 0.
+    - If we know events are _independent_, there is a direct way to calculate the probability of the intersection.
+
+## Independence
+
+- Two events are independent if the occurrence of one event does not affect the occurrence of the other event.
+
+- For example, the probability of getting a head when flipping a coin is independent of the probability of getting a 1 when rolling a die.
+    - Basically means the events are not related.
+
+- If two events are independent, the probability of the intersection of the events is the product of the probabilities of the events. 
+    - This is called the multiplication rule.
+
+## Independence: the multiplication rule
+
+- If two events are independent, the probability of the intersection of the events is given by the multiplication rule:
+
+$$ P(A \cap B) = P(A) \times P(B) $$
+
+when A and B are independent events.
+
+## Conditional probability
+
+- Conditional probability is the probability of an event given that another event has occurred.
+
+- We are interested in this because once an event has occurred, the probability of another event might change.
+    - This is somewhat of a Bayesian idea: once we obtain new information, our beliefs might change.
+
+- For instance, we are interested in knowing the probability of finding an active company, _given_ that the company is in Pichincha.
+    - This is different from the probability of finding an active company in general.
+
+- This is a conditional probability: the condition is that the company is in Pichincha.
+    - This is denoted by $P(A|B)$, where A is the event of finding an active company and B is the event of finding a company in Pichincha.
+
+## Conditional probability formula
+
+- The conditional probability of event A given event B is denoted by $P(A|B)$.
+
+- The formula for conditional probability is:
+
+$$ P(A|B) = \frac{P(A \cap B)}{P(B)} $$
+
+- Following our above example:
+    - A is the event of finding an active company.
+    - B is the event of finding a company in Pichincha.
+
+- We find active companies in Pichincha (the intersection of the events) and divide by the probability of finding a company in Pichincha.
+
+- Conditionality is the theoretical probability concept of "subsetting" a sample space based on the occurrence of another event.
+    - So, we are theorizing our use of `filter()` in R.
+
+## Conditional probability: independence
+
+- Conditional probability is a key concept for independence: if two events are truly independent, the conditional probability of one event given the other is the same as the probability of the event (without the condition).
+    - This is since conditioning on the other event does not change the probability of the event.
+
+- Example: if we know that a die roll gives an even number, what is the probability of getting a 2 in a second roll?
+    - Two die rolls are independent events (from our logical understanding of the experiment)
+    - So, the probability of getting a 2 in the second roll is the same as the probability of getting a 2 any time we roll a die.
+
+## Conditional probability: independence
+
+- The general rule is that for any two independent events A and B:
+
+$$ P(A|B) = P(A) $$
+
+$$ P(B|A) = P(B) $$
+
+## The multiplication rule for independent events
+
+- If two events are independent, the probability of the intersection of the events is the product of the probabilities of the events.
+    - This is the multiplication rule for independent events.
+    - It will only apply if the events are independent!
+
+$$ P(A \cap B) = P(A) \times P(B) $$
+
+## The multiplication rule for independent events
+
+- For instance, if we know the probability of getting a head when flipping a coin is 0.5, and the probability of getting a 1 when rolling a die is 1/6, we can calculate the probability of getting a head and a 1.
+
+$$ P(\text{Head} \cap \text{1}) = P(\text{Head}) \times P(\text{1}) = 0.5 \times \frac{1}{6} = \frac{1}{12} $$
+
+- This is a very powerful rule that can be used to calculate the probability of the intersection of independent events.
+
+- Notice that I don't use my companies' example here, as the events are likely not independent.
+    - Active companies may tend to be in Pichincha as it is the capital
+    - This underscores the need to actually understand the nature of the events, or the _data generating process_.
+
+
+

@@ -398,6 +398,8 @@ supercias %>%
 - `margin = 2` would give you the relative frequency of each column.
 - The default is `margin = NULL`, which gives you the relative frequency of the entire table.
 
+<!-- third class finished here -->
+
 # Statistical data visualization
 
 ## Introduction
