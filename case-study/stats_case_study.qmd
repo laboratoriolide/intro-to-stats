@@ -156,7 +156,7 @@ You will need to present your findings in a 10-minute academic-style presentatio
 
 - **Conclusion**: Summarize your findings and what they mean for your research question.
 
-The format is up to you but should be academic in nature (e.g. no flashy transitions, no animations, etc. ^[I am okay with some memes if they are tasteful.]). The slides should be submitted in PDF format to your GitHub repository. Submissions in RMarkdown, Quarto, or \LaTeX are encouraged, and may be eligible for extra credit. 
+The format is up to you but should be academic in nature (e.g. no flashy transitions, no animations, etc. ^[I am okay with some memes if they are tasteful.]). The slides should be submitted in PDF format to your GitHub repository. Submissions in RMarkdown, Quarto, or \LaTeX \ are encouraged, and may be eligible for extra credit. 
 
 The presentation itself need not be in English, so these slides can be in Spanish if you prefer. However, I would prefer the slides to be in English (eligible for extra credit).
 
