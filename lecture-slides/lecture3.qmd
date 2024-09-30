@@ -43,6 +43,8 @@ vector_bc <- c(bc_blue, bc_green)
 
 ```
 
+# Why probability?
+
 ## Why probability?
 
 - Probability is a foundational concept in inferential statistics.
@@ -62,6 +64,8 @@ vector_bc <- c(bc_blue, bc_green)
     - Is a sample mean fundamentally different from the population mean?
 
 - All the questions above can be answered using the concepts of probability.
+
+# Basic probability concepts
 
 ## Probability
 
@@ -371,5 +375,218 @@ $$ P(\text{Head} \cap \text{1}) = P(\text{Head}) \times P(\text{1}) = 0.5 \times
     - Active companies may tend to be in Pichincha as it is the capital
     - This underscores the need to actually understand the nature of the events, or the _data generating process_.
 
+# Random variables and probability distributions
 
+## Probability distributions
 
+- Probability distributions are a way to describe the likelihood of different outcomes in an experiment.
+
+- This means that we can use our laws of probability to construct more sophisticated models.
+    - These models will describe the likelihood of different outcomes. 
+
+## Why even use them?
+
+- In statistical inference, we will move away from simple experiments like flipping coins and rolling dice.
+
+- Our experiments will be related to the process of sampling.
+    - Sampling complies with laws of probability, as every event (one specific sample) is a subset of the sample space (the population), and such sample will look like the population, but subject to random variation.
+
+- Probability distributions will help us understand the likelihood of different outcomes in our samples, by constructing a model of the process of sampling (i.e. the probability distribution).
+    - These probability distributions are based on guesses about how the population behaves.
+    - If our guess is good, the sample will behave according to the probability distribution. Otherwise, it won't and we will have to revise our guess (another probability distribution).
+
+## Random variables
+
+- Random variables (RVs) numerically describe the outcomes of an experiment.
+    - Because they are random, the numerical value of the random variable is uncertain, hence the name.
+
+- Two major types of random variables:
+    - Discrete random variables (e.g. the number of heads when flipping a coin)
+    - Continuous random variables (e.g. the height of a person)
+
+- Random variables are denoted by capital letters, e.g. $X$, $Y$, $Z$. 
+
+## Probability distributions of RVs
+
+- The fact that these are random does not mean that we cannot describe them or predict their behavior.
+
+- RVs will have a probability distribution, since numerical outcomes that they might take have associated probabilities.
+
+- The probability distribution of a random variable is a *function* that describes the likelihood of different outcomes.
+    - This function will assign a probability to each possible outcome of the random variable.
+
+## Discrete random variables
+
+- Discrete random variables are random variables that can take on a finite number of values.
+    - It is finite because we can count the number of values the random variable can take (even if it is a large number).
+
+- For example, the number of heads when flipping a coin is a discrete random variable.
+    - It can take on values 0 or 1.
+    
+## The PDF of RVs (love the jargon or perish!)
+
+- A probability density function (PDF) is a function that describes the likelihood of different outcomes of a random variable.
+
+- Denoted by $f(x)$, where $x$ is the value of the random variable, and the output of the function $f$ is the probability of the random variable taking on that value.
+
+- For discrete random variables, the PDF is often called the probability mass function (PMF), but the idea is the same. 
+
+- We won't always have a function that takes an equation form.
+    - Discrete RVs will often have a table of probabilities which is called the PDF ($f$)
+    - Continuous RVs will often have a function that describes the likelihood of different outcomes.
+
+## Building the PDF of a discrete RV: the example of a fair coin
+
+- The fair coin example (getting a head) has a simple enough PDF. See below:
+
+| Value of the random variable | Probability |
+|------------------------------|-------------|
+| 0                            | 0.5         |
+| 1                            | 0.5         |
+
+- Notice that the value of the random variable $X# is the number of heads when flipping a coin.
+
+- The probability of getting a head is 0.5, and the probability of getting a tail is 0.5. 
+    - Getting 0 heads in this experiment is the same as getting a tail.
+
+## Building the PDF of a discrete RV: the example of a fair die
+
+- The fair die example (rolling a die) has a more complex PDF. See below:
+
+| Value of the random variable | Probability |
+|------------------------------|-------------|
+| 1                            | 1/6         |
+| 2                            | 1/6         |
+| 3                            | 1/6         |
+| 4                            | 1/6         |
+| 5                            | 1/6         |
+| 6                            | 1/6         |
+
+- In this case, the value of the random variable $X$ is the number that comes up when rolling a die. 
+
+- The probability of getting a 1 is 1/6, the probability of getting a 2 is 1/6, and so on.
+
+## The Cumulative Distribution Function (CDF)
+
+- The cumulative distribution function (CDF) is a function that describes the probability that a random variable is **less than or equal** to a certain value.
+
+- Denoted by $F(x)$, where $x$ is the value of the random variable, and the output of the function $F$ is the probability that the random variable is less than or equal to $x$.
+
+- The CDF is a very useful function that can be used to calculate probabilities of ranges of values of the random variable.
+
+## Building the CDF of a discrete RV: coin example
+
+- The CDF of a discrete random variable is built by summing the probabilities of the random variable being less than or equal to a certain value.
+
+- For the coin example, the CDF is as follows:
+
+| Value of the random variable | Probability | Cumulative Probability |
+|------------------------------|-------------|-----|
+| 0                            | 0.5         | 0.5 |
+| 1                            | 0.5         | 1.0 |
+
+- The probability of getting 0 heads or less is simply 0.5.
+    - This is the probability of getting a tail. 
+
+- Notice how the probability of getting one head OR less is 1.
+    - This is a union of the events of getting 0 heads and getting 1 head.
+    - $P(X \leq 1) = P(X = 0) + P(X = 1) = 0.5 + 0.5 = 1.0$
+
+## Expected value of a discrete RV
+
+- The expected value of a random variable is something like the "average" value of the random variable.
+
+- To obtain averages for RVs which are discrete, we multiply each possible value of the random variable by its probability, and sum these products.
+
+$$ E(X) = \sum_{i} x_i \cdot P(X = x_i) $$
+
+## Example: expected value of a coin
+
+- For the coin example, the expected value is:
+
+$$ E(X) = 0 \cdot 0.5 + 1 \cdot 0.5 = 0.5 $$
+
+- This means that the expected value of the number of heads when flipping a coin is 0.5.
+
+- Does this make sense? It will often happen that the expected value is not a possible value of the random variable.
+    - This is because the expected value is a measure of central tendency, and not necessarily a possible value of the random variable.
+
+- In an intuitive sense, the expected value is the value we would expect to get if we repeated the experiment many, many times, and took the average of the outcomes.
+
+## Variance of a discrete RV
+
+- The variance of a random variable is a measure of how spread out the values of the random variable are.
+
+- To calculate the variance of a discrete random variable, we calculate the expected value of the squared difference between the random variable and its expected value.
+
+$$ \text{Var}(X) = E((X - E(X))^2) = \sum_{i} (x_i - E(X))^2 \cdot P(X = x_i) $$
+
+## Example: variance of a coin
+
+- For the coin example, the variance is:
+
+$$ \text{Var}(X) = (0 - 0.5)^2 \cdot 0.5 + (1 - 0.5)^2 \cdot 0.5 = 0.25 $$
+
+- This means that the variance of the number of heads when flipping a coin is 0.25.
+
+- Once again, higher variance means that the values of the random variable are more spread out.
+
+## Laws of expected value and variance
+
+- When working with expected values and variances, there are some laws that can be useful as shorthands.
+
+- For any constants $a$ and $b$:
+
+$$ E(aX + b) = aE(X) + b $$
+
+$$ \text{Var}(aX + b) = a^2 \text{Var}(X) $$
+
+## Continuous random variables
+
+- There is a specific detail about the PDF of continuous random variables: the probability of the random variable taking on a specific value is 0.
+
+- This is because continuous random variables can take on an infinite number of values, and the probability of any one value is 0.
+    - Why infinite? Because we can always find a value between two values (i.e. with a lot of decimals).
+
+- Intuitively, think that whenever we have a continuous random variable, it is extremely unlikely that we will get a specific value.
+    - Measurements are never perfect. We can never measure a person's height to the exact millimeter, hence, we can't even know the exact value of the random variable.
+
+## The PDF of continuous RVs
+
+- The PDF of a continuous random variable is a function that describes the likelihood of different outcomes of the random variable.
+
+- This PDF is often a complicated equation in function form. 
+
+- We don't really work with PDFs, rather, we work with the CDF of the random variable.
+
+## The CDF of continuous RVs
+
+- The CDF of a continuous random variable is a function that describes the probability that the random variable is less than or equal to a certain value.
+
+- In this context, this can be understood as a function $F(x)$ that always gives you the area under the curve of the PDF up to a certain value $x$.
+
+- Hence, the CDF is an integral of the PDF.
+
+$$ F(x) = \int_{-\infty}^{x} f(t) dt $$
+
+where $f(t)$ is the PDF of the random variable.
+
+## Expected value of a continuous RV
+
+- The expected value of a continuous random variable is calculated in the same way as for discrete random variables.
+
+- We multiply each possible value of the random variable by its probability, and sum these products. However, this time, we use an integral instead of a sum.
+
+$$ E(X) = \int_{-\infty}^{\infty} x \cdot f(x) dx $$
+
+- Don't worry about these! We need not calculate these by hand. In an applied context, we just need to know what PDFs and CDFs are.
+
+## Variance of a continuous RV
+
+- The variance of a continuous random variable is calculated in the same way as for discrete random variables.
+
+- We calculate the expected value of the squared difference between the random variable and its expected value. However, this time, we use an integral instead of a sum.
+
+$$ \text{Var}(X) = \int_{-\infty}^{\infty} (x - E(X))^2 \cdot f(x) dx $$
+
+## The normal distribution
