@@ -34,3 +34,16 @@ scatter l1 q2
 * Use the .gph files to reproduce a graph. it will give you the code that you need for 
 * seeing what is the syntax for graphs.
 
+* You may create complex graphs as follows:
+
+scatter l1 q2, title("Titulo del Boxplot") subtitle("LAPOP 2019") 
+
+* To produce a chart for only a filtered version of the data, use if
+
+* however, be sure to check the label list
+
+label list q1_es
+
+scatter l1 q2 if q1 == 1 // not sure why it didn't work during the lecture
+
+* A twoway plot for a cumulative distro (check the other script)
