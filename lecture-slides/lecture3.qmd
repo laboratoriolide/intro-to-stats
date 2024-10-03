@@ -272,6 +272,8 @@ where A and B are mutually exclusive events.
 - Summing these two without doing anything else will overcount the probability of finding a company that is both in Pichincha and is listed as active.
      - Solution: subtract the probability of the intersection of the events.
 
+<!-- lecture stopped here -->
+
 ## Union under non-mutually exclusive events: the addition rule
 
 - The probability of the union of two events is given by the addition rule:
