@@ -138,9 +138,11 @@ In the project's small paper, you will need to present your research question, y
 
 While a literature review is not required, you should acknowledge any sources that you use in your analysis. This includes data sources, code snippets, and any supporting literature. You should provide a bibliography in the last section of the paper, as per a standard bibliography style (e.g. APA, Chicago, etc.).
 
-The paper may be written in any software you desire, but it must be submitted in PDF format to your GitHub repository. Submissions in RMarkdown, Quarto, or \LaTeX are encouraged, and may be eligible for extra credit. Ideally, the paper is written in English, please let me know if you require an exception and I will evaluate it. 
+The paper may be written in any software you desire, but it must be submitted in PDF format to your GitHub repository. Submissions in RMarkdown, Quarto, or \LaTeX  \ are encouraged, and may be eligible for extra credit. Ideally, the paper is written in English, please let me know if you require an exception and I will evaluate it. 
 
 Further, if you desire to do a literature review, it should review the state-of-the-art in the research question you are asking, and should be written in a way that is understandable to the general public. Papers and findings that relate to yours should be cited and discussed in this review. A literature review will be considered for a good amount of extra credit.
+
+There is no minimum or maximum length for the paper, but it should be long enough to cover all the required sections. I would expect a paper to be at least 5 pages long, but this is just a guideline.
 
 ## Slides
 
@@ -215,10 +217,10 @@ The project will be graded on the following criteria:
 
 - Quality of analysis: 30%. This includes the quality of the research question, the appropriateness of the method, and the quality of the results, considering the coding and the statistical analysis.
 
-- Quality of the report: 30%. This includes the quality of the writing, the structure of the paper, and the quality of the figures and tables.
+- Quality of the report: 30%. This includes the structure of the paper, and the quality of the figures and tables, and that the paper complies with everything that I set out in the previous sections.
 
 - Quality of the presentation: 20%. This includes the quality of the slides, the quality of the oral presentation, and the ability to answer questions. 
 
 - Attended meeting: 10%. This includes whether the group met with me to discuss the project.
 
-- Writing quality: 10%. This includes the quality of the writing in the report and the slides. While grammar and style is important, I will focus on the overall quality of the writing, i.e. whether the writing is clear and concise enough to convey the desired meaning. 
+- Writing quality: 10%. This includes the quality of the writing in the report and the slides. While grammar and style is important, I will focus on the overall quality of the writing, i.e. whether the writing is clear and concise enough to convey the desired meaning. Further, this also includes the quality of the documentation in the repository. Also, the bibliography should be in a clear format and should be complete.
