@@ -317,6 +317,8 @@ when A and B are independent events.
 - We are interested in this because once an event has occurred, the probability of another event might change.
     - This is somewhat of a Bayesian idea: once we obtain new information, our beliefs might change.
 
+## Conditional probability
+
 - For instance, we are interested in knowing the probability of finding an active company, _given_ that the company is in Pichincha.
     - This is different from the probability of finding an active company in general.
 
@@ -330,6 +332,8 @@ when A and B are independent events.
 - The formula for conditional probability is:
 
 $$ P(A|B) = \frac{P(A \cap B)}{P(B)} $$
+
+## Conditional probability example
 
 - Following our above example:
     - A is the event of finding an active company.
