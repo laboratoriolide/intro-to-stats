@@ -596,3 +596,319 @@ $$ E(X) = \int_{-\infty}^{\infty} x \cdot f(x) dx $$
 $$ \text{Var}(X) = \int_{-\infty}^{\infty} (x - E(X))^2 \cdot f(x) dx $$
 
 ## The normal distribution
+
+- There are several continuous probability distributions, but the most common is the normal distribution
+    - Also know as the Gaussian distribution or the bell curve.
+
+- **Why is the normal distribution the most common?**
+  1. **Flexibility and simplicity**:
+     - The normal distribution is easy to handle and does not require complex mathematical tools.
+  2. **Common in real-world data**:
+     - Many variables are approximately normally distributed, making it practical for various applications.
+
+## The normal distribution
+
+- **Key properties of the normal distribution**:
+  - **Symmetric** and **bell-shaped**.
+  - Completely determined by two parameters:
+    - **Mean** ($\mu$): Determines the center of the distribution.
+    - **Standard deviation** ($\sigma$): Determines the spread or width of the distribution.
+  - The mean and standard deviation define the shape of the distribution.
+
+## The PDF of the normal distribution
+- The PDF of the normal distribution is given by the formula:
+
+  $$f(x) = \frac{1}{\sigma \sqrt{2\pi}} e^{-\frac{1}{2} \left( \frac{x - \mu}{\sigma} \right)^2}$$
+
+  which will not give you an actual number, but a probability density.
+  
+  - The equation uses the **mean** ($\mu$) and **standard deviation** ($\sigma$) to determine the likelihood of different outcomes.
+
+  - Although the formula looks complex, it has been extensively studied and is widely available in software tools. 
+    - No need to calculate it by hand or memorize it!
+
+## How $\mu$ and $\sigma$ affect the normal distribution
+
+- Different values of $\sigma$ affect how flat or peaked the distribution is.
+    - A small $\sigma$ means the distribution is tall and thin.
+    - A large $\sigma$ means the distribution is short and wide.
+
+- Larger values of $\sigma$ mean that the distribution is more spread out.
+    - Less data will be close to the mean, and more data will be far from the mean.
+
+## Different normal distributions under varying $\sigma$
+
+```{r}
+#| label: normal-distributions
+#| echo: false
+
+x <- seq(-5, 5, by = 0.01)
+
+y1 <- dnorm(x, mean = 0, sd = 0.5)
+
+y2 <- dnorm(x, mean = 0, sd = 1)
+
+y3 <- dnorm(x, mean = 0, sd = 2)
+
+y4 <- dnorm(x, mean = 0, sd = 3)
+
+# graph with ggplot2
+
+library(ggplot2)
+
+df <- data.frame(x = rep(x, 4), y = c(y1, y2, y3, y4), 
+                 sd = rep(c("0.5", "1", "2", "3"), each = length(x)))
+
+ggplot(df, aes(x = x, y = y, color = sd)) +
+    geom_line() +
+    labs(title = "Normal distributions with different standard deviations",
+         x = "x", y = "Density") +
+    theme_minimal()
+```
+
+## How $\mu$ and $\sigma$ affect the normal distribution
+
+- Values of \mu affect the center of the distribution.
+    - A larger $\mu$ means the distribution is shifted to the right.
+    - A smaller $\mu$ means the distribution is shifted to the left.
+
+- This doesn't really affect the shape of the distribution, but rather where the center of the distribution is.
+
+## Different normal distributions under varying $\mu$
+
+```{r}
+#| label: normal-distributions-mu
+#| echo: false
+
+y1 <- dnorm(x, mean = -2, sd = 1)
+
+y2 <- dnorm(x, mean = 0, sd = 1)
+
+y3 <- dnorm(x, mean = 2, sd = 1)
+
+# graph with ggplot2
+
+df <- data.frame(x = rep(x, 3), y = c(y1, y2, y3), 
+                 mu = rep(c("-2", "0", "2"), each = length(x)))
+
+ggplot(df, aes(x = x, y = y, color = mu)) +
+    geom_line() +
+    labs(title = "Normal distributions with different means",
+         x = "x", y = "Density") +
+    theme_minimal()
+```
+
+## Properties of the normal distribution
+
+1. The normal distribution is symmetric around the mean.
+    - This means that the probability of a value being above the mean is the same as the probability of a value being below the mean.
+    - This makes the mean the "center" of the distribution, as it is also the median and mode.
+
+2. The mean can take any value, no restrictions on it being negative
+
+3. The standard deviation must be positive, as a measure of spread and the root of the variance.
+
+4. The area under the curve of the normal distribution is 1.
+    - This means that we're looking at the CDF between $-\infty$ and $\infty$, so it should sum to 1 (100% of all outcomes).
+
+## The CDF of the normal distribution
+
+- The CDF of the normal distribution is given by the formula:
+
+$$ F(x) = \int_{-\infty}^{x} f(t) dt $$
+
+- We never need to do this by hand! We can use software tools to calculate the CDF of the normal distribution.
+
+- However, it must be clear that CDFs are often defined as the area under the curve up to a certain value of the random variable.
+    - They answer the question "what is the probability that the random variable is less than or equal to a certain value?"
+
+## The CDF of the normal distribution
+
+```{r}
+#| label: normal_cdf
+#| fig.align: "center"
+#| echo: false
+
+# A graph of the PDF of the normal distribution with mean 0 and standard deviation 1
+
+# Function to calculate the normal PDF
+normal_pdf <- function(x, mean, sd) {
+  exp(-(x - mean)^2 / (2 * sd^2)) / (sd * sqrt(2 * pi))
+}
+
+# Set mean and standard deviation
+mean <- 0
+sd <- 1
+
+# Generate x-values for the curve
+x <- seq(-4, 4, length.out = 100)
+
+# Calculate the y-values using the normal PDF function
+y <- normal_pdf(x, mean, sd)
+
+# Create a data frame for the curve
+df_curve <- data.frame(x = x, y = y)
+
+# Generate x-values for the shaded area
+x_shade <- seq(-4, 1, length.out = 100)
+
+# Calculate the y-values for the shaded area
+y_shade <- normal_pdf(x_shade, mean, sd)
+
+# Create a data frame for the shaded area
+df_shade <- data.frame(x = x_shade, y = y_shade)
+
+# Create the plot
+ggplot() +
+  geom_line(data = df_curve, aes(x, y), color = "blue") +
+  geom_area(data = df_shade, aes(x, y), fill = "lightblue", alpha = 0.5) +
+  scale_x_continuous(breaks = seq(-4, 4, 1)) +
+  xlab("x") + ylab("Density") +
+  ggtitle("Normal Distribution (mean = 0, sd = 1)") +
+  theme_minimal()
+
+```
+
+## The CDF of the normal distribution: the empirical rule
+
+- The empirical or the 68-95-99.7 rule is a rule of thumb that describes the proportion of values that fall within a certain number of standard deviations from the mean in a normal distribution.
+
+- It is a direct consequence of the properties of the normal distribution, and the use of the CDF for probabilities which are easier to calculate.
+
+## The empirical rule
+
+- The empirical rule states that for a normal distribution:
+    - Approximately 68% of the data falls within one standard deviation of the mean.
+    - Approximately 95% of the data falls within two standard deviations of the mean.
+    - Approximately 99.7% of the data falls within three standard deviations of the mean.
+
+## The empirical rule
+
+```{r}
+#| label: empirical-rule
+#| fig.align: "center"
+#| echo: false
+
+# Create a data frame for the normal distribution
+
+x <- seq(-4, 4, length.out = 100)
+
+y <- dnorm(x, mean = 0, sd = 1)
+
+df <- data.frame(x = x, y = y)
+
+# Create a data frame for the shaded areas
+
+x_shade_1 <- seq(-1, 1, length.out = 100)
+
+y_shade_1 <- dnorm(x_shade_1, mean = 0, sd = 1)
+
+df_shade_1 <- data.frame(x = x_shade_1, y = y_shade_1)
+
+x_shade_2 <- seq(-2, 2, length.out = 100)
+
+y_shade_2 <- dnorm(x_shade_2, mean = 0, sd = 1)
+
+df_shade_2 <- data.frame(x = x_shade_2, y = y_shade_2)
+
+x_shade_3 <- seq(-3, 3, length.out = 100)
+
+y_shade_3 <- dnorm(x_shade_3, mean = 0, sd = 1)
+
+df_shade_3 <- data.frame(x = x_shade_3, y = y_shade_3)
+
+# Create the plot
+
+ggplot() +
+  geom_line(data = df, aes(x, y), color = "blue") +
+  geom_area(data = df_shade_1, aes(x, y), fill = "lightblue", alpha = 0.5) +
+  geom_area(data = df_shade_2, aes(x, y), fill = "lightblue", alpha = 0.5) +
+  geom_area(data = df_shade_3, aes(x, y), fill = "lightblue", alpha = 0.5) +
+  scale_x_continuous(breaks = seq(-4, 4, 1)) +
+  xlab("x") + ylab("Density") +
+  ggtitle("Normal Distribution with Empirical Rule") +
+  theme_minimal()
+```
+
+## The standard normal distribution
+
+- The **standard normal distribution** is a normal distribution with $\mu = 0$ and $\sigma = 1$.
+    - This is a very common distribution in statistics.
+
+- The PDF of the standard normal distribution is given by the formula:
+    
+$$f(x) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} x^2}$$
+
+- This is the normal distribution with $\mu = 0$ and $\sigma = 1$.
+
+- The standard normal distribution is often denoted by $Z$.
+
+## Standardizing normal distributions
+
+- All normal distributions can be standardized to the standard normal distribution.
+
+- We do this with our beloved $z$-scores.
+
+$$ z = \frac{x - \mu}{\sigma} $$
+
+- This $z$-score tells us how many standard deviations a value is from the mean.
+
+- So, if a distribution is normal and we transform it to a standard normal distribution, we can use the standard normal distribution to calculate probabilities.
+
+## Using R with the normal distribution
+
+- R has built-in functions to work with the normal distribution.
+
+- The `dnorm()` function calculates the PDF of the normal distribution.
+    - It takes the value of the random variable, the mean, and the standard deviation as arguments.
+    - The use of `d` in the function name is a convention in R to denote the density function.
+
+- We would use `dnorm()` to calculate the likelihood of different outcomes of the random variable.
+    - Also to plot the PDF of the normal distribution.
+
+## Using R with the normal distribution
+
+- The `pnorm()` function calculates the CDF of the normal distribution.
+    - It takes the value of the random variable, the mean, and the standard deviation as arguments.
+    - The use of `p` in the function name is a convention in R to denote the cumulative distribution function.
+
+- This is the most useful function with exercises!
+
+## Using R with the normal distribution: exercises with `pnorm()`
+
+- **Exercise 1**: Calculate the probability of a standard normal random variable being less than 1.96.
+
+- **Exercise 2**: Calculate the probability of a standard normal random variable being greater than -1.64.
+
+- **Exercise 3**: Calculate the probability of a standard normal random variable being between -1.96 and 1.96.
+
+## Using R with the normal distribution
+
+- The `qnorm()` function calculates the quantiles of the normal distribution.
+    - It takes the probability, the mean, and the standard deviation as arguments.
+    - The use of `q` in the function name is a convention in R to denote the quantile function.
+
+- This is useful when we want to find the value of the random variable that corresponds to a certain probability.
+
+- This is otherwise known as the inverse CDF
+
+## Using R with the normal distribution: exercises with `qnorm()`
+
+- Consider the following for a std. normal RV:
+
+- **Exercise 1**: Find the value of a standard normal random variable that corresponds to the 95th percentile.
+
+- **Exercise 2**: Find the value of a standard normal random variable that corresponds to the 10th percentile.
+
+- **Exercise 3**: What RV value corresponds to a cumulative probability of 0.5? 
+
+## The standard normal table
+
+- Because we always end up calculating probabilities with the standard normal distribution, we have a table of probabilities for the standard normal distribution which is often used.
+
+- The table gives the probability that a standard normal random variable is less than a certain value.
+
+- Basically, instead of calculating a CDF with `pnorm()`, we can look up the value in the table.
+    - Need to do "inverse lookups" with the table.
+
+
