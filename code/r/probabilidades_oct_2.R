@@ -1,4 +1,5 @@
 # Operaciones con probabilidades
+# oct 2
 
 # Preliminares ------------------------------------------------------------
 
