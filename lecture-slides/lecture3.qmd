@@ -674,6 +674,7 @@ ggplot(df, aes(x = x, y = y, color = sd)) +
 
 - This doesn't really affect the shape of the distribution, but rather where the center of the distribution is.
 
+<!-- lecture until here. -->
 ## Different normal distributions under varying $\mu$
 
 ```{r}
