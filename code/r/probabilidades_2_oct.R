@@ -55,4 +55,3 @@ verificacion_base <-
   filter((situacion_legal == "ACTIVA" | provincia == "PICHINCHA"))
 
 verificacion_prob <- nrow(verificacion_base)/nrow(supercias_raw)
-
