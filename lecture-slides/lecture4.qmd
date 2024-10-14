@@ -24,7 +24,9 @@ knitr:
 ---
 
 ```{r}
-#| Load the required libraries
+#| label: setup 
+#| include: false
+# Load the required libraries
 
 library(tidyverse)
 
@@ -333,3 +335,40 @@ ggplot(data.frame(sample_means_30), aes(x = sample_means_30)) +
        x = "Sample Mean",
        y = "Frequency")
 ```
+
+## Stata implementations
+
+- The `sample` command in Stata can be used to sample data.
+    - `sample 10` will sample 10 percent of the data.
+    - `sample 10, count` will sample 10 observations.
+
+- Need to set the seed for reproducibility.
+    - `set seed 123`
+
+- Good to preserve the sample in a separate dataset.
+    - `preserve` and `restore` commands can be used to do this.
+
+## Stata implementations
+
+- An equivalent to `dnorm()` in Stata is the `normalden()` function.
+    - `display normalden(1)` will give the density of the standard normal distribution at 1.
+    - To modify the mean and standard deviation, use `normalden(mean, sd)`.
+
+
+- For `pnorm()`, e.g., the CDF of the normal distribution, we can use the `normal()`, which automatically calculates the CDF for a standard normal distribution.
+    - `display normal(1)` will give the CDF of the standard normal distribution at 1.
+    - To modify the mean and standard deviation, get the $Z$-score and use `normal(Z)`
+
+## Stata implementations
+
+- For `qnorm()`, e.g., the quantile function of the normal distribution, we can use the `invnormal()` function.
+    - `display invnormal(0.95)` will give the 95th percentile of the standard normal distribution.
+    - Transform the quantile to the $Z$-score to get the quantile for a normal distribution with a different mean and standard deviation.
+
+## Stata implementations
+
+- To calculate a standard error in Stata, we can use the `egen` command.
+    - `egen mean_capital = mean(capital_suscrito)`
+    - `egen se_capital = std(capital_suscrito) / sqrt(_N)`
+
+- Use the code above to calculate the standard error of the sample mean.
