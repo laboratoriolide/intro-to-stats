@@ -264,6 +264,8 @@ ggplot(data.frame(sample_means), aes(x = sample_means)) +
     - It is the sampling distribution of the sample mean!
     - We may use laws of probability to describe its behavior.
 
+<!-- lecture stopped here. -->
+
 ## Expected value and standard error of the sample mean
 
 - The expected value of the sample mean would be calculated in the same way as the expected value of any other random variable.
