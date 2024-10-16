@@ -275,4 +275,128 @@ p_value <- 2 * (1 - pnorm(abs(z_score)))
 | **Right-tailed** | $H_0: \mu \leq \mu_0$ vs $H_1: \mu > \mu_0$  | $z_{\alpha}$ (positive)     | Reject $H_0$ if $z > z_{\alpha}$  |
 | **Two-tailed** | $H_0: \mu = \mu_0$ vs $H_1: \mu \neq \mu_0$  | $z_{\alpha/2}$ (positive and negative) | Reject $H_0$ if $z < -z_{\alpha/2}$ or $z > z_{\alpha/2}$ |
 
-## The t-test
+## T-tests (when we don't know the population standard deviation)
+
+As you might remember, when we cannot obtain enough information for a reliable estimate of the population standard deviation, we use the sample standard deviation as an estimate. This is common in practice when we have small samples or lack population standard deviation.
+
+**T-statistic:**
+
+$$t = \frac{\bar{x} - \mu_0}{s_x / \sqrt{n}}$$
+
+- $\mu_0$: hypothesized population mean
+- Denominator: standard error of the sample mean.
+
+The $t$ distribution is used, which has heavier tails than the normal distribution and depends on degrees of freedom ($n-1$).
+
+---
+
+## Types of T-Tests
+
+1. **Left-tailed test**: Test for means less than the hypothesized value.
+2. **Right-tailed test**: Test for means greater than the hypothesized value.
+3. **Two-tailed test**: Test for means different from the hypothesized value.
+
+---
+
+## Example: Left-tailed Test
+
+- Sample size: 25
+- Sample mean: 9.5
+- Sample standard deviation: 2.5
+- Hypothesized mean: 10
+- Significance level: 5%
+
+## Example: Left-tailed test
+
+### Null and Alternative Hypotheses:
+$$H_0: \mu \geq 10$$
+$$H_1: \mu < 10$$
+
+### T-statistic:
+$$t = \frac{9.5 - 10}{2.5 / \sqrt{25}} = -2$$
+
+**Critical value** at 24 degrees of freedom (5% significance):
+$$t_{critical} = -1.711$$
+
+Since $t = -2$ is less than the critical value, we reject the null hypothesis.
+
+## Example: Right-tailed Test
+
+- Sample size: 25
+- Sample mean: 9.5
+- Sample standard deviation: 2.5
+- Hypothesized mean: 10
+
+## Example: Right-tailed Test
+
+### Null and Alternative Hypotheses:
+$$H_0: \mu \leq 10$$
+$$H_1: \mu > 10$$
+
+### T-statistic:
+$$t = \frac{9.5 - 10}{2.5 / \sqrt{25}} = -2$$
+
+For a right-tailed test, the critical value is $t_{critical} = 1.711$. Since $t = -2$, we fail to reject the null hypothesis.
+
+## Two-tailed Test Example
+
+- Sample size: 25
+- Sample mean: 12
+- Sample standard deviation: 2.5
+- Hypothesized mean: 10
+
+## Two-tailed Test Example
+
+### Null and Alternative Hypotheses:
+$$H_0: \mu = 10$$
+$$H_1: \mu \neq 10$$
+
+### T-statistic:
+$$t = \frac{12 - 10}{2.5 / \sqrt{25}} = 4$$
+
+Critical values are $t_{critical} = \pm 2.064$. Since $t = 4$ exceeds the critical values, we reject the null hypothesis.
+
+## Proportions and Sampling Distribution
+
+For categorical data, we compute proportions instead of means. Proportions follow a normal distribution with large enough samples. The sample proportion is calculated as:
+
+$$\hat{p} = \frac{x}{n}$$
+
+Where $x$ is the number of successes and $n$ is the sample size.
+
+**Standard error of proportion:**
+$$SE(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}$$
+
+## The Interval Approach for Hypothesis Testing
+
+We can also use confidence intervals for hypothesis testing. If the null hypothesis value falls outside the confidence interval, we reject the null hypothesis.
+
+```{r}
+#| label: fig-proportion-interval-approach
+#| echo: false
+#| fig.cap: "Confidence interval for the proportion of people who support each candidate"
+#| fig.align: center
+#| fig.height: 4
+
+library(tidyverse)
+
+poll_data <- tibble(
+  candidate = c("Candidate A", "Candidate B"),
+  proportion = c(0.55, 0.45),
+  lower = c(0.52, 0.42),
+  upper = c(0.58, 0.48)
+)
+
+poll_data %>%
+  ggplot(aes(x = candidate, y = proportion)) +
+  geom_point(size = 5) +
+  geom_errorbar(aes(ymin = lower, ymax = upper), width = 0.2) +
+  geom_hline(yintercept = 0.5, linetype = "dashed") +
+  labs(
+    title = "Poll results",
+    subtitle = "95% confidence intervals for support",
+    x = "Candidate",
+    y = "Proportion"
+  ) +
+  theme_minimal()
+```
