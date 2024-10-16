@@ -274,3 +274,5 @@ p_value <- 2 * (1 - pnorm(abs(z_score)))
 | **Left-tailed** | $H_0: \mu \geq \mu_0$ vs $H_1: \mu < \mu_0$  | $z_{\alpha}$ (negative)     | Reject $H_0$ if $z < z_{\alpha}$  |
 | **Right-tailed** | $H_0: \mu \leq \mu_0$ vs $H_1: \mu > \mu_0$  | $z_{\alpha}$ (positive)     | Reject $H_0$ if $z > z_{\alpha}$  |
 | **Two-tailed** | $H_0: \mu = \mu_0$ vs $H_1: \mu \neq \mu_0$  | $z_{\alpha/2}$ (positive and negative) | Reject $H_0$ if $z < -z_{\alpha/2}$ or $z > z_{\alpha/2}$ |
+
+## The t-test

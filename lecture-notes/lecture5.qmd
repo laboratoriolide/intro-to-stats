@@ -250,5 +250,4 @@ To compare, if we see that the test statistic is smaller than the negative criti
 |              | 0.01     | +/- 2.58           |
 |              | 0.1    | +/- 1.64         |
 
-
 Don't ever forget that when you make a conclusion which does support the null hypothesis, you can never say that the null hypothesis is true. You can only say that there is not enough statistical evidence to reject the null hypothesis. Further, remember that based on your significance level, you can define your confidence level, which is 1- $\alpha$. So, if you have a significance level of 0.05, you have a confidence level of 95%. If you have a significance level of 0.01, you have a confidence level of 99%. If you have a significance level of 0.1, you have a confidence level of 90%. 95% is the most common confidence level, but you can use any confidence level you want.
