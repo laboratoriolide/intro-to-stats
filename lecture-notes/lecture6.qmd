@@ -1,6 +1,6 @@
 ---
 title: Introduction to Statistics - Young Researchers Fellowship Program
-subtitle: Lecture 6 - Hypothesis Testing - Two Sample tests
+subtitle: Lecture 6 - Hypothesis Testing - T-tests and two Sample tests
 institute: Laboratorio de Investigación para el Desarrollo del Ecuador
 author: Daniel Sánchez Pazmiño
 date: ""
