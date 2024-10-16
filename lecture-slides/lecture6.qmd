@@ -400,3 +400,95 @@ poll_data %>%
   ) +
   theme_minimal()
 ```
+
+# Hypothesis Testing for Means of Two Populations
+
+## Two populations?
+
+So far, we've been performing hypothesis tests about one population. However, we can also test hypotheses about two populations. In this case, we test whether the population mean of one group is equal to the mean of another group.
+
+## Difference Between Two Population Means
+
+### Known Population Standard Deviations (Independent Samples)
+
+In this case, we want to know if the means of two populations are different. 
+
+We compute the difference between the two sample means:
+
+$$\bar{x}_1 - \bar{x}_2$$
+
+The standard error of this difference is:
+
+$$SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}$$
+
+Where:
+- $\sigma_1$ and $\sigma_2$ are the population standard deviations
+- $n_1$ and $n_2$ are the sample sizes.
+
+## Hypothesis Testing for Two Means
+
+The test statistic for the difference between two means is:
+
+$$z = \frac{\bar{x}_1 - \bar{x}_2 - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}}$$
+
+We use this $z$ statistic to test the null hypothesis $H_0: \mu_1 = \mu_2$.
+
+## Example Hypotheses for Two Means
+
+We can define three types of hypothesis tests for two means:
+
+1. **Two-tailed test:**
+    $$H_0: \mu_1 - \mu_2 = 0$$
+    $$H_1: \mu_1 - \mu_2 \neq 0$$
+   
+2. **Right-tailed test:**
+    $$H_0: \mu_1 - \mu_2 \leq 0$$
+    $$H_1: \mu_1 - \mu_2 > 0$$
+   
+3. **Left-tailed test:**
+    $$H_0: \mu_1 - \mu_2 \geq 0$$
+    $$H_1: \mu_1 - \mu_2 < 0$$
+
+## Unknown Population Standard Deviations (Independent Samples)
+
+When the population standard deviations are unknown, we estimate them using the sample standard deviations, and use the $t$ distribution.
+
+The standard error becomes:
+
+$$SE(\bar{x}_1 - \bar{x}_2) = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}$$
+
+The test statistic is:
+
+$$t = \frac{\bar{x}_1 - \bar{x}_2 - (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$
+
+## Degrees of Freedom
+
+To calculate the degrees of freedom, use the formula:
+
+$$df = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{\left(\frac{s_1^2}{n_1}\right)^2}{n_1 - 1} + \frac{\left(\frac{s_2^2}{n_2}\right)^2}{n_2 - 1}}$$
+
+The $t$ statistic is compared with the critical value from the $t$ distribution based on the calculated degrees of freedom.
+
+## Dependent Samples (Paired Samples)
+
+For dependent samples, we work with the **difference** between paired observations. For example:
+
+| Student | Test score before | Test score after | Difference |
+|---------|-------------------|------------------|------------|
+| 1       | 80                | 90               | 10         |
+| 2       | 70                | 85               | 15         |
+| ...     | ...               | ...              | ...        |
+
+We conduct a one-sample $t$-test on the mean difference between the groups.
+
+## Test Statistic for Paired Samples
+
+For paired samples, the test statistic is calculated as:
+
+$$t = \frac{\bar{d} - \mu_d}{\frac{s_d}{\sqrt{n}}}$$
+
+Where:
+- $\bar{d}$ is the mean difference between pairs.
+- $\mu_d$ is the hypothesized mean difference.
+- $s_d$ is the sample standard deviation of the differences.
+- $n$ is the sample size.
