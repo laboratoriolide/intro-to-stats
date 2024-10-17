@@ -65,4 +65,48 @@ valor_p < 0.05
 # rechazar la hipótesis nula!
 # el promedio de los estudiantes es DIFERENTE de 70.
 
+edad_entrantes <-
+esi %>% 
+  filter(tip_movi == 1, edad < 999) %>% 
+  pull(edad)
 
+edad_salientes <-
+  esi %>% 
+  filter(tip_movi == 2, edad < 999) %>% 
+  pull(edad)
+
+t.test(edad_entrantes, edad_salientes, alternative = "two.sided", mu = 0)
+
+t.test(edad_entrantes, edad_salientes, alternative = "less")
+
+t.test(edad_entrantes, edad_salientes, alternative = "greater")
+
+# Pareadas ----------------------------------------------------------------
+
+calificaciones_antes <- c(80, 23, 60, 100, 76)
+
+calificaciones_despues <- c(70, 80, 100, 99, 60)
+
+df_estudiantes <- data.frame(calificaciones_antes, calificaciones_despues)
+
+df_estudiantes_pareada <-
+  df_estudiantes %>% 
+  mutate(diff = calificaciones_despues- calificaciones_antes)
+
+t.test(calificaciones_antes, calificaciones_despues, paired = T)
+
+t.test(df_estudiantes_pareada$diff)
+
+# Proporciones, dos muestras ----------------------------------------------
+
+# demostrar si los viajeros en quito son significativamente mayores en proporcion a los de guayaquil
+# H0: p_quito = p_guayaquil
+# H1: p_quito > p_guayaquil
+
+viajeros_quito <- table(esi$can_jefm)["1701"]
+
+viajeros_guayaquil <- table(esi$can_jefm)["901"]
+
+total <- nrow(esi)
+
+prop.test(x = c(viajeros_quito, viajeros_guayaquil), n = c(total, total), alternative = "greater")
