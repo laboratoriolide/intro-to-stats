@@ -34,6 +34,7 @@ You will work with a dataset and create a research questions in groups of up to 
     - I will provide a Google Sheets link where you will write down your group members.
 
 2. **Deliverables**: You will submit a GitHub repository, which includes all analysis, a small paper (report), and a slides presentation. See below for more details.
+    - As of mid October, this was changed to define the smal paper as optional. GitHub repo and a sali
 
 3. **Data**:  You will use the Registro de Entradas y Salidas, as provided by the Ecuadorian statistics agency, INEC. See below for more details.
 

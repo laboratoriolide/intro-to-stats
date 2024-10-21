@@ -58,6 +58,10 @@ test_statistic <- (45 - 70)/(10/sqrt(100))
 
 valor_p <- 2 * pnorm(test_statistic)
 
+# de la otra manera:
+
+valor_p_2 <- 2 * pnorm(1-abs(test_statistic))
+
 # preguntar a R si valor_p es menor que alpha (95% confianza) = 0.05
 
 valor_p < 0.05
